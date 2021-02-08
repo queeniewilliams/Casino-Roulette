@@ -1,0 +1,324 @@
+* {
+  margin: auto;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+/* Main Font Size */
+
+html {
+  font-size: 16px;
+}
+
+/* Main Design */
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+header {
+  margin: 0;
+  width: 100%;
+}
+.banner {
+  display: flex;
+}
+.background {
+  display: flex;
+}
+h1 {
+  font-size: 100px;
+  color: #fff;
+  text-align: center;
+}
+
+.play-board {
+  position: absolute;
+  top: 32%;
+  display: flex;
+  margin-top: 0;
+}
+.spin {
+  position: relative;
+  margin-top: -260px;
+  left: 20%;
+  z-index: 2;
+}
+
+.ball {
+  position: absolute;
+  left: 45.5%;
+  bottom: 78%;
+}
+.blur {
+  animation: blur 10s;
+}
+
+table {
+  position: relative;
+  right: 10%;
+  border: 5px solid rgb(97, 72, 4);
+  border-radius: 8px;
+  padding: 100px;
+  font-size: 1.5rem;
+  border-spacing: 0;
+  color: white;
+  background-color: rgb(7, 94, 43);
+  z-index: 0;
+}
+.betArea {
+  position: relative;
+  cursor: pointer;
+}
+td {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border: 2px solid rgb(179, 178, 178);
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 18px;
+}
+td:hover {
+  transform: scale(1.1);
+  transition: all 1s ease;
+}
+
+.bigfo {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.empty {
+  border: none;
+}
+
+.red {
+  background-color: rgb(136, 10, 10);
+}
+.red:hover {
+  background-color: firebrick;
+}
+
+.black {
+  background-color: rgb(5, 32, 23);
+}
+.black:hover {
+  opacity: 0.5;
+}
+
+#red-diamond {
+  width: 0;
+  height: 0;
+  border: 30px solid transparent;
+  border-bottom-color: rgb(175, 7, 7);
+  position: relative;
+  top: -30px;
+  z-index: -1;
+}
+#red-diamond:after {
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: 30px;
+  width: 0;
+  height: 0;
+  border: 30px solid transparent;
+  border-top-color: rgb(175, 7, 7);
+  z-index: -1;
+}
+
+#black-diamond {
+  width: 0;
+  height: 0;
+  border: 30px solid transparent;
+  border-bottom-color: black;
+  position: relative;
+  top: -30px;
+  z-index: -1;
+}
+#black-diamond:after {
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: 30px;
+  width: 0;
+  height: 0;
+  border: 30px solid transparent;
+  border-top-color: black;
+  z-index: -1;
+}
+
+footer {
+  margin: 130px auto 10px auto;
+}
+
+.author {
+  text-align: center;
+}
+/* Play Scene */
+#play {
+  position: absolute;
+  bottom: 10%;
+  right: 90%;
+  margin: -40px 0 0 30px;
+  border: 1px solid rgb(238, 236, 227);
+  border-radius: 5px;
+  font-size: 2rem;
+  max-width: 80px;
+  text-align: center;
+  color: rgb(14, 13, 13);
+  padding: 5px 10px;
+  background-color: rgb(168, 15, 15);
+  cursor: pointer;
+}
+
+.bet-size {
+  position: absolute;
+  display: flex;
+  right: 13%;
+  top: 85%;
+  cursor: pointer;
+}
+#bet-10 {
+  margin-top: -30px;
+  margin-left: -20px;
+}
+#bet-100 {
+  margin-top: -60px;
+  margin-left: -20px;
+}
+#bet-500 {
+  margin-top: -130px;
+  margin-left: -30px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.balance-display {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 90%;
+  right: 5%;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: rgb(212, 12, 12);
+}
+
+.reset-bet {
+  position: absolute;
+  bottom: 5%;
+  right: 8%;
+  border: 1px solid rgb(228, 227, 226);
+  border-radius: 5px;
+  max-width: 100px;
+  text-align: center;
+  font-size: 1.4rem;
+  color: rgb(248, 248, 245);
+  padding: 8px 10px;
+  background-color: rgb(168, 18, 18);
+  cursor: pointer;
+}
+
+.show-change {
+  border: 1px solid gold;
+  border-radius: 5px;
+  max-width: 60px;
+  text-align: center;
+  font-size: 1.4rem;
+  padding: 5px 10px;
+  background-color: yellow;
+}
+
+#reset {
+  display: none;
+}
+
+#change {
+  display: none;
+}
+
+.lastnumbers-display {
+  display: flex;
+  position: absolute;
+  margin: -80px 0 0 320px;
+  bottom: 10%;
+  right: 65%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.lastnumbers-display span {
+  font-size: 1.25rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.ln-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-width: 80%;
+  font-size: 2rem;
+}
+
+span {
+  color: yellow;
+}
+
+.ln-font {
+  margin: 0 0 0 20px;
+}
+
+.probability-display {
+  position: absolute;
+  bottom: 70%;
+  right: 5%;
+  margin: 30px 0 0 1000px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.probability-display span {
+  font-size: 22px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.prob-container {
+  display: grid;
+  flex-direction: column;
+  font-size: 14px;
+  color: mintcream;
+}
+
+span {
+  color: rgb(175, 14, 14);
+}
+
+.prob {
+  margin: 0 0 0 20px;
+}
+
+.white-ball {
+  border: 1px solid white;
+  border-radius: 50%;
+  background-color: white;
+  width: 15px;
+  height: 15px;
+  margin-top: -20px;
+  z-index: 150;
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" async=""></script>
+    <title>Casino Roulette</title>
+  </head>
+  <body>
+    <header>
+      <!-- <div class="banner">
+        <img
+          src="https://slm-assets.secondlife.com/assets/20895766/original/Pink_LED_Side_Bar_Lights_Blurred.gif?1529583486"
+          width="600px"
+        />
+        <img
+          src="https://slm-assets.secondlife.com/assets/20895766/original/Pink_LED_Side_Bar_Lights_Blurred.gif?1529583486"
+          width="600px"
+        />
+        <img
+          src="https://slm-assets.secondlife.com/assets/20895766/original/Pink_LED_Side_Bar_Lights_Blurred.gif?1529583486"
+          width="600px"
+        />
+      </div> -->
+      <div class="background">
+        <img
+          src="https://media0.giphy.com/media/8lGQNlZqYBP86D4Cep/giphy.gif"
+          height="800px"
+        />
+        <img
+          src="https://media0.giphy.com/media/8lGQNlZqYBP86D4Cep/giphy.gif"
+          height="800px"
+        />
+      </div>
+    </header>
+    <main>
+      <div class="play-board">
+        <div class="spin">
+          <img
+            class="wheel"
+            src="https://i.ibb.co/W2pxcHT/Clipart-Key-419585.png"
+            width="350px"
+            height="350px"
+          />
+          <img
+            class="ball"
+            src="https://pngimg.com/uploads/billiard/billiard_PNG10956.png"
+            width="15px"
+            height="15px"
+          />
+        </div>
+        <table class="betArea">
+          <tbody>
+            <tr>
+              <td rowspan="3" id="0">0</td>
+              <td id="3" class="red">3</td>
+              <td id="6" class="black">6</td>
+              <td id="9" class="red">9</td>
+              <td id="12" class="black">12</td>
+              <td id="15" class="red">15</td>
+              <td id="18" class="black">18</td>
+              <td id="21" class="red">21</td>
+              <td id="24" class="black">24</td>
+              <td id="27" class="red">27</td>
+              <td id="30" class="black">30</td>
+              <td id="33" class="red">33</td>
+              <td id="36" class="black">36</td>
+              <td id="3-36">2 to 1</td>
+            </tr>
+            <tr>
+              <td id="2" class="black">2</td>
+              <td id="5" class="red">5</td>
+              <td id="8" class="black">8</td>
+              <td id="11" class="red">11</td>
+              <td id="14" class="black">14</td>
+              <td id="17" class="red">17</td>
+              <td id="20" class="black">20</td>
+              <td id="23" class="red">23</td>
+              <td id="26" class="black">26</td>
+              <td id="29" class="red">29</td>
+              <td id="32" class="black">32</td>
+              <td id="35" class="red">35</td>
+              <td id="2-35">2 to 1</td>
+            </tr>
+            <tr>
+              <td id="1" class="red">1</td>
+              <td id="4" class="black">4</td>
+              <td id="7" class="red">7</td>
+              <td id="10" class="black">10</td>
+              <td id="13" class="red">13</td>
+              <td id="16" class="black">16</td>
+              <td id="19" class="red">19</td>
+              <td id="22" class="black">22</td>
+              <td id="25" class="red">25</td>
+              <td id="28" class="black">28</td>
+              <td id="31" class="red">31</td>
+              <td id="34" class="black">34</td>
+              <td id="1-34">2 to 1</td>
+            </tr>
+            <tr class="bigfo">
+              <td class="empty"></td>
+              <td id="1st12" colspan="4">1st 12</td>
+              <td id="2nd12" colspan="4">2nd 12</td>
+              <td id="3rd12" colspan="4">3rd 12</td>
+            </tr>
+            <tr class="bigfo">
+              <td class="empty"></td>
+              <td id="1-18" colspan="2">1-18</td>
+              <td id="even" colspan="2">Even</td>
+              <td id="red" colspan="2"><div id="red-diamond"></div></td>
+              <td id="black" colspan="2"><div id="black-diamond"></div></td>
+              <td id="odd" colspan="2">Odd</td>
+              <td id="19-36" colspan="2">19-36</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="play">PLAY</div>
+      <div class="bet-size">
+        <img
+          id="bet-1"
+          src="https://i.ibb.co/ThQBv66/1.png"
+          width="130px"
+          height="130px"
+        />
+        <img
+          id="bet-10"
+          src="https://i.ibb.co/K7khv0F/10.png"
+          width="130px"
+          height="130px"
+        />
+        <img
+          id="bet-100"
+          src="https://i.ibb.co/kyDj7cG/100.png"
+          width="130px"
+          height="130px"
+        />
+        <img
+          id="bet-500"
+          src="https://i.ibb.co/M59G0rv/500.png"
+          width="130px"
+          height="130px"
+        />
+      </div>
+      <div class="flex-container">
+        <div class="balance-display">
+          <h2>Balance:</h2>
+          <div id="balance">2000</div>
+        </div>
+        <div class="reset-bet" id="reset">Reset Bet</div>
+        <div class="show-change" id="change"></div>
+      </div>
+      <div class="lastnumbers-display">
+        <span>Last Numbers:</span>
+        <div class="ln-container">
+          <div class="ln-font" id="ln0"></div>
+          <div class="ln-font" id="ln1"></div>
+          <div class="ln-font" id="ln2"></div>
+          <div class="ln-font" id="ln3"></div>
+          <div class="ln-font" id="ln4"></div>
+          <div class="ln-font" id="ln5"></div>
+          <div class="ln-font" id="ln6"></div>
+          <div class="ln-font" id="ln7"></div>
+          <div class="ln-font" id="ln8"></div>
+          <div class="ln-font" id="ln9"></div>
+        </div>
+      </div>
+      <div class="probability-display">
+        <span>Probabilities:</span>
+        <div class="prob-container">
+          <div class="prob" id="prob-color"></div>
+          <div class="prob" id="prob-even"></div>
+          <div class="prob" id="prob-half"></div>
+          <div class="prob" id="prob-row"></div>
+          <div class="prob" id="prob-column"></div>
+        </div>
+      </div>
+    </main>
+    <script></script>
+  </body>
+</html>
