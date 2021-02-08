@@ -57,8 +57,8 @@ h1 {
 
 .ball {
   position: absolute;
-  left: 45.5%;
-  bottom: 78%;
+  left: 48%;
+  bottom: 70%;
 }
 .blur {
   animation: blur 10s;
