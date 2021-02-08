@@ -973,3 +973,311 @@ const resetAllArrays = () => {
     numberOptions[i] = 0
   }
 }
+
+// last numbers
+const lastNumbers = []
+
+const last0 = document.getElementById('ln0')
+const last1 = document.getElementById('ln1')
+const last2 = document.getElementById('ln2')
+const last3 = document.getElementById('ln3')
+const last4 = document.getElementById('ln4')
+const last5 = document.getElementById('ln5')
+const last6 = document.getElementById('ln6')
+const last7 = document.getElementById('ln7')
+const last8 = document.getElementById('ln8')
+const last9 = document.getElementById('ln9')
+
+const lastNumbersSetters = [
+  last0,
+  last1,
+  last2,
+  last3,
+  last4,
+  last5,
+  last6,
+  last7,
+  last8,
+  last9
+]
+const lastNumberColors = []
+
+const displayLastNumbers = () => {
+  if (lastNumbers.length > 10) {
+    lastNumbers.pop()
+    lastNumberColors.pop()
+  }
+  for (let i = 0; i < lastNumbers.length; i++) {
+    lastNumbersSetters[i].innerHTML = lastNumbers[i]
+  }
+  if (actualColor === 0) {
+    lastNumberColors.unshift('red')
+  } else if (actualColor === 1) {
+    lastNumberColors.unshift('black')
+  } else {
+    lastNumberColors.unshift('green')
+  }
+  for (let i = 0; i < lastNumberColors.length; i++) {
+    lastNumbersSetters[i].style.color = lastNumberColors[i]
+  }
+}
+
+
+
+// check win
+const checkNumberWin = () => {
+  if (numberOptions[actualNumber] !== 0) {
+    const winNumber = numberOptions[actualNumber] * 36
+    displayWin(winNumber)
+  }
+  for (let i = 0; i < numberOptions.length; i++) {
+    numberOptions[i] = 0
+  }
+}
+
+let actualColumn = null
+let actualRow = null
+let actualHalf = null
+let actualEven = null
+let actualColor = null
+
+const setOptions = () => {
+  if (actualNumber !== 0 && actualNumber <= 12) {
+    actualRow = 0
+  } else if (actualNumber !== 0 && actualNumber > 12 && actualNumber <= 24) {
+    actualRow = 1
+  } else if (actualNumber !== 0 && actualNumber > 24 && actualNumber <= 36) {
+    actualRow = 2
+  }
+
+  if (actualNumber !== 0 && actualNumber < 19) {
+    actualHalf = 0
+  } else if (actualNumber !== 0 && actualNumber > 18) {
+    actualHalf = 1
+  }
+
+  const modulo = actualNumber % 2
+  if (actualNumber !== 0 && modulo === 0) {
+    actualEven = 0
+  } else if (actualNumber !== 0 && modulo === 1) {
+    actualEven = 1
+  }
+
+  switch (actualNumber) {
+    case 0:
+      actualColor = 69
+      break
+    case 1:
+      actualColumn = 2
+      actualColor = 0
+      break
+    case 2:
+      actualColumn = 1
+      actualColor = 1
+      break
+    case 3:
+      actualColumn = 0
+      actualColor = 0
+      break
+    case 4:
+      actualColumn = 2
+      actualColor = 1
+      break
+    case 5:
+      actualColumn = 1
+      actualColor = 0
+      break
+    case 6:
+      actualColumn = 0
+      actualColor = 1
+      break
+    case 7:
+      actualColumn = 2
+      actualColor = 0
+      break
+    case 8:
+      actualColumn = 1
+      actualColor = 1
+      break
+    case 9:
+      actualColumn = 0
+      actualColor = 0
+      break
+    case 10:
+      actualColumn = 2
+      actualColor = 1
+      break
+    case 11:
+      actualColumn = 1
+      actualColor = 0
+      break
+    case 12:
+      actualColumn = 0
+      actualColor = 1
+      break
+    case 13:
+      actualColumn = 2
+      actualColor = 0
+      break
+    case 14:
+      actualColumn = 1
+      actualColor = 1
+      break
+    case 15:
+      actualColumn = 0
+      actualColor = 0
+      break
+    case 16:
+      actualColumn = 2
+      actualColor = 1
+      break
+    case 17:
+      actualColumn = 1
+      actualColor = 0
+      break
+    case 18:
+      actualColumn = 0
+      actualColor = 1
+      break
+    case 19:
+      actualColumn = 2
+      actualColor = 0
+      break
+    case 20:
+      actualColumn = 1
+      actualColor = 1
+      break
+    case 21:
+      actualColumn = 0
+      actualColor = 0
+      break
+    case 22:
+      actualColumn = 2
+      actualColor = 1
+      break
+    case 23:
+      actualColumn = 1
+      actualColor = 0
+      break
+    case 24:
+      actualColumn = 0
+      actualColor = 1
+      break
+    case 25:
+      actualColumn = 2
+      actualColor = 0
+      break
+    case 26:
+      actualColumn = 1
+      actualColor = 1
+      break
+    case 27:
+      actualColumn = 0
+      actualColor = 0
+      break
+    case 28:
+      actualColumn = 2
+      actualColor = 1
+      break
+    case 29:
+      actualColumn = 1
+      actualColor = 0
+      break
+    case 30:
+      actualColumn = 0
+      actualColor = 1
+      break
+    case 31:
+      actualColumn = 2
+      actualColor = 0
+      break
+    case 32:
+      actualColumn = 1
+      actualColor = 1
+      break
+    case 33:
+      actualColumn = 0
+      actualColor = 0
+      break
+    case 34:
+      actualColumn = 2
+      actualColor = 1
+      break
+    case 35:
+      actualColumn = 1
+      actualColor = 0
+      break
+    case 36:
+      actualColumn = 0
+      actualColor = 1
+      break
+  }
+  if (actualNumber !== 0) {
+    checkColumnWin()
+    checkRowWin()
+    checkHalfWin()
+    checkEvenWin()
+    checkColorWin()
+  } else {
+    resetAllArrays()
+  }
+
+  const checkColumnWin = () => {
+    if (columnOptions[actualColumn] !== 0) {
+      const winNumber = columnOptions[actualColumn] * 3
+      setTimeout(() => {
+        displayWin(winNumber)
+      }, 10)
+    }
+    for (let i = 0; i < columnOptions.length; i++) {
+      columnOptions[i] = 0
+    }
+  }
+  
+  const checkRowWin = () => {
+    if (rowOptions[actualRow] !== 0) {
+      const winNumber = rowOptions[actualRow] * 3
+      setTimeout(() => {
+        displayWin(winNumber)
+      }, 20)
+    }
+    for (let i = 0; i < rowOptions.length; i++) {
+      rowOptions[i] = 0
+    }
+  }
+  
+  const checkHalfWin = () => {
+    if (halfOptions[actualHalf] !== 0) {
+      const winNumber = halfOptions[actualHalf] * 2
+      setTimeout(() => {
+        displayWin(winNumber)
+      }, 30)
+    }
+    for (let i = 0; i < halfOptions.length; i++) {
+      halfOptions[i] = 0
+    }
+  }
+  
+  const checkEvenWin = () => {
+    if (evenOptions[actualEven] !== 0) {
+      const winNumber = evenOptions[actualEven] * 2
+      setTimeout(() => {
+        displayWin(winNumber)
+      }, 40)
+    }
+    for (let i = 0; i < evenOptions.length; i++) {
+      evenOptions[i] = 0
+    }
+  }
+  
+  const checkColorWin = () => {
+    if (colorOptions[actualColor] !== 0) {
+      const winNumber = colorOptions[actualColor] * 2
+      setTimeout(() => {
+        displayWin(winNumber)
+      }, 50)
+    }
+    for (let i = 0; i < colorOptions.length; i++) {
+      colorOptions[i] = 0
+    }
+  }
