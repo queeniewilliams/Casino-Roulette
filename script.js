@@ -645,7 +645,7 @@ const third12 = document.getElementById('3rd12')
 
 const rowOptions = [0, 0, 0]
 const addToRowOptions = (number) => {
-  rowOptions[number] = rowOptions[number] + betSize
+  rowOptions[number] += betSize
 }
 
 first12.addEventListener('click', function () {
@@ -687,7 +687,7 @@ const secondHalf = document.getElementById('19-36')
 
 const halfOptions = [0, 0]
 const addToHalfOptions = (number) => {
-  halfOptions[number] = halfOptions[number] + betSize
+  halfOptions[number] += betSize
 }
 
 firstHalf.addEventListener('click', function () {
@@ -749,7 +749,7 @@ const black = document.getElementById('black')
 
 const colorOptions = [0, 0]
 const addToColorOptions = (number) => {
-  colorOptions[number] = colorOptions[number] + betSize
+  colorOptions[number] += betSize
 }
 
 red.addEventListener('click', function () {
@@ -779,266 +779,477 @@ let actualNumber = null
 let alreadyPlayed = false
 
 //spinning wheel
-
+let isSpinComplete = false
+let isWheelSpin = false
 const playBtn = document.querySelector('#play')
+let actualDeg
 const spin = () => {
   console.log('inside spin')
-  // if (insertBet()) {
+  console.log('spinning')
   const wheel = document.querySelector('.wheel')
+  let isWheelSpin = true
   let deg = 0
-  let gameIsOn = true
-  playBtn.addEventListener('click', () => {
-    console.log('spinning')
-    playBtn.style.pointerEvents = 'none'
-    deg = Math.floor(0 + Math.random() * 3700)
-    wheel.style.transition = 'all 10s ease-out'
-    wheel.style.transform = `rotate(${deg}deg)`
-    wheel.classList.add('blur')
-  })
-  wheel.addEventListener('transitionend', () => {
-    wheel.classList.remove('blur')
-    playBtn.style.pointerEvents = 'auto'
-    wheel.style.transition = 'none'
-    const actualDeg = deg % 360
-    wheel.style.transform = `rotate(${actualDeg}deg)`
-  })
+  playBtn.style.pointerEvents = 'none'
+  deg = 0 + Math.random() * 360
+  actualDeg = deg
+  // wheel.style.transform = `rotate(${actualDeg}deg)`
+  console.log(deg)
+  wheel.style.transition = 'all 1s ease-out'
+  wheel.style.transform = `rotate(${deg}deg)`
+  wheel.classList.add('blur')
+  // if (insertBet()) {
+  // wheel.addEventListener('transitionend', () => {
+  //   console.log('trasitionend')
+  //   wheel.classList.remove('blur')
+  //   playBtn.style.pointerEvents = 'auto'
+  //   wheel.style.transition = 'none'
+  // })
+  setTimeout(() => {
+    isSpinComplete = true
+    if (isSpinComplete) {
+      console.log(actualDeg)
+      spinResult()
+      console.log(actualNumber)
+      if (actualNumber !== 0 && actualNumber !== null) {
+        console.log('made it here')
+        checkWin()
+      } else {
+        resetAllArrays()
+      }
+    }
+  }, 1000)
+
   // } else {
   //   console.log('pls insert bet')
   //   alert(`Please insert bet before start Play`)
   // }
 }
-spin()
 
+playBtn.addEventListener('click', () => {
+  console.log('click')
+  spin()
+})
+// let slice26 = {
+//   min: 0,
+//   max: 9.72,
+//   value: 26
+// }
+// let slice3 = {
+//   min: 9.72,
+//   max: 19.44,
+//   value: 3
+// }
+// let slice35 = {
+//   min: 19.44,
+//   max: 29.16,
+//   value: 35
+// }
+// let slice12 = {
+//   min: 29.16,
+//   max: 38.88,
+//   value: 12
+// }
+
+// let slice28 = {
+//   min: 38.88,
+//   max: 48.6,
+//   value: 28
+// }
+// let slice7 = {
+//   min: 48.6,
+//   max: 58.32,
+//   value: 7
+// }
+// let slice29 = {
+//   min: 58.32,
+//   max: 68.04,
+//   value: 29
+// }
+// let slice18 = {
+//   min: 68.04,
+//   max: 77.76,
+//   value: 18
+// }
+// let slice22 = {
+//   min: 77.76,
+//   max: 87.48,
+//   value: 22
+// }
+// let slice9 = {
+//   min: 87.48,
+//   max: 97.2,
+//   value: 9
+// }
+// let slice31 = {
+//   min: 97.2,
+//   max: 106.92,
+//   value: 31
+// }
+// let slice14 = {
+//   min: 106.92,
+//   max: 116.64,
+//   value: 14
+// }
+
+// let slice20 = {
+//   min: 116.64,
+//   max: 126.36,
+//   value: 20
+// }
+// let slice1 = {
+//   min: 126.36,
+//   max: 136.08,
+//   value: 1
+// }
+// let slice33 = {
+//   min: 136.08,
+//   max: 145.8,
+//   value: 33
+// }
+// let slice16 = {
+//   min: 145.8,
+//   max: 155.52,
+//   value: 16
+// }
+// let slice24 = {
+//   min: 155.52,
+//   max: 165.24,
+//   value: 24
+// }
+// let slice5 = {
+//   min: 165.24,
+//   max: 174.96,
+//   value: 5
+// }
+// let slice10 = {
+//   min: 174.96,
+//   max: 184.68,
+//   value: 10
+// }
+// let slice23 = {
+//   min: 184.68,
+//   max: 194.4,
+//   value: 23
+// }
+// let slice8 = {
+//   min: 194.4,
+//   max: 204.12,
+//   value: 8
+// }
+// let slice30 = {
+//   min: 204.12,
+//   max: 213.84,
+//   value: 30
+// }
+// let slice11 = {
+//   min: 213.84,
+//   max: 223.56,
+//   value: 11
+// }
+// let slice36 = {
+//   min: 223.56,
+//   max: 233.28,
+//   value: 36
+// }
+// let slice13 = {
+//   min: 233.28,
+//   max: 243,
+//   value: 13
+// }
+// let slice27 = {
+//   min: 243,
+//   max: 252.72,
+//   value: 27
+// }
+// let slice6 = {
+//   min: 252.72,
+//   max: 262.44,
+//   value: 6
+// }
+// let slice34 = {
+//   min: 262.44,
+//   max: 272.16,
+//   value: 34
+// }
+// let slice17 = {
+//   min: 272.16,
+//   max: 281.88,
+//   value: 17
+// }
+// let slice25 = {
+//   min: 281.88,
+//   max: 291.6,
+//   value: 25
+// }
+// let slice2 = {
+//   min: 291.6,
+//   max: 301.32,
+//   value: 2
+// }
+// let slice21 = {
+//   min: 301.32,
+//   max: 311.04,
+//   value: 21
+// }
+// let slice4 = {
+//   min: 311.04,
+//   max: 320.76,
+//   value: 4
+// }
+// let slice19 = {
+//   min: 320.76,
+//   max: 330.48,
+//   value: 19
+// }
+// let slice15 = {
+//   min: 330.48,
+//   max: 340.2,
+//   value: 15
+// }
+// let slice32 = {
+//   min: 340.2,
+//   max: 349.92,
+//   value: 35
+// }
+// let slice0 = {
+//   min: 349.92,
+//   max: 360,
+//   value: 36
+// }
 let slice0 = {
   min: 0,
-  max: 9.72,
+  max: 4.86,
   value: 0
 }
-let slice1 = {
-  min: 9.72,
-  max: 19.44,
-  value: 1
-}
-let slice2 = {
-  min: 19.44,
-  max: 29.16,
-  value: 2
+let slice26 = {
+  min: 4.85,
+  max: 14.58,
+  value: 26
 }
 let slice3 = {
-  min: 29.16,
-  max: 38.88,
+  min: 14.58,
+  max: 24.3,
   value: 3
+}
+let slice35 = {
+  min: 24.3,
+  max: 34.02,
+  value: 35
+}
+let slice12 = {
+  min: 34.02,
+  max: 43.74,
+  value: 12
+}
+let slice28 = {
+  min: 43.74,
+  max: 52.94,
+  value: 28
+}
+let slice7 = {
+  min: 52.94,
+  max: 62.66,
+  value: 7
+}
+let slice29 = {
+  min: 62.66,
+  max: 72.38,
+  value: 29
+}
+let slice18 = {
+  min: 72.38,
+  max: 82.1,
+  value: 18
+}
+let slice22 = {
+  min: 82.1,
+  max: 91.82,
+  value: 22
+}
+let slice9 = {
+  min: 91.82,
+  max: 101.54,
+  value: 9
+}
+let slice31 = {
+  min: 101.54,
+  max: 111.26,
+  value: 31
+}
+let slice14 = {
+  min: 111.26,
+  max: 120.98,
+  value: 14
+}
+let slice20 = {
+  min: 120.98,
+  max: 130.7,
+  value: 20
+}
+let slice1 = {
+  min: 130.7,
+  max: 140.42,
+  value: 1
+}
+let slice33 = {
+  min: 140.42,
+  max: 150.14,
+  value: 33
+}
+let slice16 = {
+  min: 150.14,
+  max: 159.86,
+  value: 16
+}
+let slice24 = {
+  min: 159.86,
+  max: 169.58,
+  value: 24
+}
+let slice5 = {
+  min: 169.58,
+  max: 179.3,
+  value: 5
+}
+let slice10 = {
+  min: 179.3,
+  max: 189.02,
+  value: 10
+}
+let slice23 = {
+  min: 189.02,
+  max: 198.74,
+  value: 23
+}
+let slice8 = {
+  min: 198.74,
+  max: 208.46,
+  value: 8
+}
+let slice30 = {
+  min: 208.46,
+  max: 218.18,
+  value: 30
+}
+let slice11 = {
+  min: 218.18,
+  max: 227.9,
+  value: 11
+}
+let slice36 = {
+  min: 227.9,
+  max: 237.62,
+  value: 36
+}
+let slice13 = {
+  min: 237.62,
+  max: 247.34,
+  value: 13
+}
+let slice27 = {
+  min: 247.34,
+  max: 257.06,
+  value: 27
+}
+let slice6 = {
+  min: 257.06,
+  max: 266.78,
+  value: 6
+}
+let slice34 = {
+  min: 266.78,
+  max: 276.5,
+  value: 34
+}
+let slice17 = {
+  min: 276.5,
+  max: 286.22,
+  value: 17
+}
+let slice25 = {
+  min: 286.22,
+  max: 295.94,
+  value: 25
+}
+let slice2 = {
+  min: 295.94,
+  max: 305.66,
+  value: 2
+}
+let slice21 = {
+  min: 305.66,
+  max: 315.38,
+  value: 21
 }
 
 let slice4 = {
-  min: 38.88,
-  max: 48.6,
+  min: 315.38,
+  max: 325.1,
   value: 4
 }
-let slice5 = {
-  min: 48.6,
-  max: 58.32,
-  value: 5
-}
-let slice6 = {
-  min: 58.32,
-  max: 68.04,
-  value: 6
-}
-let slice7 = {
-  min: 68.04,
-  max: 77.76,
-  value: 7
-}
-let slice8 = {
-  min: 77.76,
-  max: 87.48,
-  value: 8
-}
-let slice9 = {
-  min: 87.48,
-  max: 97.2,
-  value: 9
-}
-let slice10 = {
-  min: 97.2,
-  max: 106.92,
-  value: 10
-}
-let slice11 = {
-  min: 106.92,
-  max: 116.64,
-  value: 11
-}
-
-let slice12 = {
-  min: 116.64,
-  max: 126.36,
-  value: 12
-}
-let slice13 = {
-  min: 126.36,
-  max: 136.08,
-  value: 13
-}
-let slice14 = {
-  min: 136.08,
-  max: 145.8,
-  value: 14
-}
-let slice15 = {
-  min: 145.8,
-  max: 155.52,
-  value: 15
-}
-let slice16 = {
-  min: 155.52,
-  max: 165.24,
-  value: 16
-}
-let slice17 = {
-  min: 165.24,
-  max: 174.96,
-  value: 17
-}
-let slice18 = {
-  min: 174.96,
-  max: 184.68,
-  value: 18
-}
 let slice19 = {
-  min: 184.68,
-  max: 194.4,
+  min: 325.1,
+  max: 334.82,
   value: 19
 }
-let slice20 = {
-  min: 194.4,
-  max: 204.12,
-  value: 20
-}
-let slice21 = {
-  min: 204.12,
-  max: 213.84,
-  value: 21
-}
-let slice22 = {
-  min: 213.84,
-  max: 223.56,
-  value: 22
-}
-let slice23 = {
-  min: 223.56,
-  max: 233.28,
-  value: 23
-}
-let slice24 = {
-  min: 233.28,
-  max: 243,
-  value: 24
-}
-let slice25 = {
-  min: 243,
-  max: 252.72,
-  value: 25
-}
-let slice26 = {
-  min: 252.72,
-  max: 262.44,
-  value: 26
-}
-let slice27 = {
-  min: 262.44,
-  max: 272.16,
-  value: 27
-}
-let slice28 = {
-  min: 272.16,
-  max: 281.88,
-  value: 28
-}
-let slice29 = {
-  min: 281.88,
-  max: 291.6,
-  value: 29
-}
-let slice30 = {
-  min: 291.6,
-  max: 301.32,
-  value: 30
-}
-let slice31 = {
-  min: 301.32,
-  max: 311.04,
-  value: 31
+let slice15 = {
+  min: 334.82,
+  max: 344.54,
+  value: 15
 }
 let slice32 = {
-  min: 311.04,
-  max: 320.76,
+  min: 344.54,
+  max: 354.26,
   value: 32
 }
-let slice33 = {
-  min: 320.76,
-  max: 330.48,
-  value: 33
-}
-let slice34 = {
-  min: 330.48,
-  max: 340.2,
-  value: 34
-}
-let slice35 = {
-  min: 340.2,
-  max: 349.92,
-  value: 35
-}
-let slice36 = {
-  min: 349.92,
-  max: 360,
-  value: 36
-}
+
 const sliceArr = [
   slice0,
-  slice1,
-  slice2,
-  slice3,
-  slice4,
-  slice5,
-  slice6,
-  slice7,
-  slice8,
-  slice9,
-  slice10,
-  slice11,
-  slice12,
-  slice13,
-  slice14,
-  slice15,
-  slice16,
-  slice17,
-  slice18,
-  slice19,
-  slice20,
-  slice21,
-  slice22,
-  slice22,
-  slice23,
-  slice24,
-  slice25,
   slice26,
-  slice27,
-  slice28,
-  slice29,
-  slice30,
-  slice31,
-  slice32,
-  slice33,
-  slice34,
+  slice3,
   slice35,
-  slice36
+  slice12,
+  slice28,
+  slice7,
+  slice29,
+  slice18,
+  slice22,
+  slice9,
+  slice31,
+  slice14,
+  slice20,
+  slice1,
+  slice33,
+  slice16,
+  slice24,
+  slice5,
+  slice10,
+  slice23,
+  slice8,
+  slice30,
+  slice11,
+  slice36,
+  slice13,
+  slice27,
+  slice6,
+  slice34,
+  slice17,
+  slice25,
+  slice2,
+  slice21,
+  slice4,
+  slice19,
+  slice15,
+  slice32
 ]
-const spinResult = () => {
+function spinResult() {
   sliceArr.forEach((slice) => {
-    if (actualDeg > min && actualDeg < max) {
+    if (actualDeg >= 354.26 && actualDeg <= 360) {
+      actualNumber = 0
+      return
+    }
+    if (actualDeg > slice.min && actualDeg < slice.max) {
+      console.log('slice', slice.value)
       actualNumber = slice.value
       console.log('this is the result', actualNumber, slice.value)
     }
@@ -1067,39 +1278,32 @@ const resetAllArrays = () => {
   }
 }
 
-const setNumber = () => {
-  spinResult()
-  lastNumbers.unshift(actualNumber)
-}
-const playTable = () => {
-  gameIsOn = true
-  resetBetButton.style.display = 'none'
-  setTimeout(() => {
-    setNumber()
-    checkWin()
-    gameIsOn = false
-    actualBet = 0
-  }, 12000)
-}
-
-const displayWin = () => {
-  money = money + betSize
-  moneyDisplay.innerHTML = `${money}`
-}
 // check win
-const checkWin = () => {
+function checkWin() {
   checkNumberWin()
-  setOptions()
+  checkColumnWin()
+  checkRowWin()
+  checkHalfWin()
+  checkEvenWin()
+  checkColorWin()
   setTimeout(() => {
     document.querySelectorAll('.number-bet').forEach((chip) => chip.remove())
     displayLastNumbers()
-  }, 1500)
+  }, 1000)
+}
+const displayWin = (win) => {
+  money = money - betSize + win
+  moneyDisplay.innerHTML = `${money}`
 }
 
-const checkNumberWin = () => {
-  if (actualNumber !== 0) {
-    const winNumber = actualNumber
+function checkNumberWin() {
+  console.log('check num win')
+  if (numberOptions[actualNumber] !== 0) {
+    const winNumber = numberOptions[actualNumber] * 36
     displayWin(winNumber)
+  }
+  for (let i = 0; i < numberOptions.length; i++) {
+    numberOptions[i] = 0
   }
 }
 
@@ -1109,7 +1313,7 @@ let actualHalf = null
 let actualEven = null
 let actualColor = null
 
-const setOptions = () => {
+function setOptions() {
   if (actualNumber !== 0 && actualNumber <= 12) {
     actualRow = 0
   } else if (actualNumber !== 0 && actualNumber > 12 && actualNumber <= 24) {
@@ -1130,159 +1334,160 @@ const setOptions = () => {
   } else if (actualNumber !== 0 && modulo === 1) {
     actualEven = 1
   }
-}
 
-switch (actualNumber) {
-  case 0:
-    actualColor = 69
-    break
-  case 1:
-    actualColumn = 2
-    actualColor = 0
-    break
-  case 2:
-    actualColumn = 1
-    actualColor = 1
-    break
-  case 3:
-    actualColumn = 0
-    actualColor = 0
-    break
-  case 4:
-    actualColumn = 2
-    actualColor = 1
-    break
-  case 5:
-    actualColumn = 1
-    actualColor = 0
-    break
-  case 6:
-    actualColumn = 0
-    actualColor = 1
-    break
-  case 7:
-    actualColumn = 2
-    actualColor = 0
-    break
-  case 8:
-    actualColumn = 1
-    actualColor = 1
-    break
-  case 9:
-    actualColumn = 0
-    actualColor = 0
-    break
-  case 10:
-    actualColumn = 2
-    actualColor = 1
-    break
-  case 11:
-    actualColumn = 1
-    actualColor = 0
-    break
-  case 12:
-    actualColumn = 0
-    actualColor = 1
-    break
-  case 13:
-    actualColumn = 2
-    actualColor = 0
-    break
-  case 14:
-    actualColumn = 1
-    actualColor = 1
-    break
-  case 15:
-    actualColumn = 0
-    actualColor = 0
-    break
-  case 16:
-    actualColumn = 2
-    actualColor = 1
-    break
-  case 17:
-    actualColumn = 1
-    actualColor = 0
-    break
-  case 18:
-    actualColumn = 0
-    actualColor = 1
-    break
-  case 19:
-    actualColumn = 2
-    actualColor = 0
-    break
-  case 20:
-    actualColumn = 1
-    actualColor = 1
-    break
-  case 21:
-    actualColumn = 0
-    actualColor = 0
-    break
-  case 22:
-    actualColumn = 2
-    actualColor = 1
-    break
-  case 23:
-    actualColumn = 1
-    actualColor = 0
-    break
-  case 24:
-    actualColumn = 0
-    actualColor = 1
-    break
-  case 25:
-    actualColumn = 2
-    actualColor = 0
-    break
-  case 26:
-    actualColumn = 1
-    actualColor = 1
-    break
-  case 27:
-    actualColumn = 0
-    actualColor = 0
-    break
-  case 28:
-    actualColumn = 2
-    actualColor = 1
-    break
-  case 29:
-    actualColumn = 1
-    actualColor = 0
-    break
-  case 30:
-    actualColumn = 0
-    actualColor = 1
-    break
-  case 31:
-    actualColumn = 2
-    actualColor = 0
-    break
-  case 32:
-    actualColumn = 1
-    actualColor = 1
-    break
-  case 33:
-    actualColumn = 0
-    actualColor = 0
-    break
-  case 34:
-    actualColumn = 2
-    actualColor = 1
-    break
-  case 35:
-    actualColumn = 1
-    actualColor = 0
-    break
-  case 36:
-    actualColumn = 0
-    actualColor = 1
-    break
+  switch (actualNumber) {
+    case 0:
+      actualColor = 69
+      break
+    case 1:
+      actualColumn = 2
+      actualColor = 0
+      break
+    case 2:
+      actualColumn = 1
+      actualColor = 1
+      break
+    case 3:
+      actualColumn = 0
+      actualColor = 0
+      break
+    case 4:
+      actualColumn = 2
+      actualColor = 1
+      break
+    case 5:
+      actualColumn = 1
+      actualColor = 0
+      break
+    case 6:
+      actualColumn = 0
+      actualColor = 1
+      break
+    case 7:
+      actualColumn = 2
+      actualColor = 0
+      break
+    case 8:
+      actualColumn = 1
+      actualColor = 1
+      break
+    case 9:
+      actualColumn = 0
+      actualColor = 0
+      break
+    case 10:
+      actualColumn = 2
+      actualColor = 1
+      break
+    case 11:
+      actualColumn = 1
+      actualColor = 1
+      break
+    case 12:
+      actualColumn = 0
+      actualColor = 0
+      break
+    case 13:
+      actualColumn = 2
+      actualColor = 1
+      break
+    case 14:
+      actualColumn = 1
+      actualColor = 0
+      break
+    case 15:
+      actualColumn = 0
+      actualColor = 1
+      break
+    case 16:
+      actualColumn = 2
+      actualColor = 0
+      break
+    case 17:
+      actualColumn = 1
+      actualColor = 1
+      break
+    case 18:
+      actualColumn = 0
+      actualColor = 0
+      break
+    case 19:
+      actualColumn = 2
+      actualColor = 0
+      break
+    case 20:
+      actualColumn = 1
+      actualColor = 1
+      break
+    case 21:
+      actualColumn = 0
+      actualColor = 0
+      break
+    case 22:
+      actualColumn = 2
+      actualColor = 1
+      break
+    case 23:
+      actualColumn = 1
+      actualColor = 0
+      break
+    case 24:
+      actualColumn = 0
+      actualColor = 1
+      break
+    case 25:
+      actualColumn = 2
+      actualColor = 0
+      break
+    case 26:
+      actualColumn = 1
+      actualColor = 1
+      break
+    case 27:
+      actualColumn = 0
+      actualColor = 0
+      break
+    case 28:
+      actualColumn = 2
+      actualColor = 1
+      break
+    case 29:
+      actualColumn = 1
+      actualColor = 1
+      break
+    case 30:
+      actualColumn = 0
+      actualColor = 0
+      break
+    case 31:
+      actualColumn = 2
+      actualColor = 1
+      break
+    case 32:
+      actualColumn = 1
+      actualColor = 0
+      break
+    case 33:
+      actualColumn = 0
+      actualColor = 1
+      break
+    case 34:
+      actualColumn = 2
+      actualColor = 0
+      break
+    case 35:
+      actualColumn = 1
+      actualColor = 1
+      break
+    case 36:
+      actualColumn = 0
+      actualColor = 0
+      break
+  }
 }
-
-const checkColumnWin = () => {
+function checkColumnWin() {
+  setOptions()
+  console.log('check column win')
   if (columnOptions[actualColumn] !== 0) {
     const winNumber = columnOptions[actualColumn] * 3
     setTimeout(() => {
@@ -1294,7 +1499,9 @@ const checkColumnWin = () => {
   }
 }
 
-const checkRowWin = () => {
+function checkRowWin() {
+  setOptions()
+  console.log('check row win')
   if (rowOptions[actualRow] !== 0) {
     const winNumber = rowOptions[actualRow] * 3
     setTimeout(() => {
@@ -1306,7 +1513,9 @@ const checkRowWin = () => {
   }
 }
 
-const checkHalfWin = () => {
+function checkHalfWin() {
+  setOptions()
+  console.log('check half win')
   if (halfOptions[actualHalf] !== 0) {
     const winNumber = halfOptions[actualHalf] * 2
     setTimeout(() => {
@@ -1318,7 +1527,9 @@ const checkHalfWin = () => {
   }
 }
 
-const checkEvenWin = () => {
+function checkEvenWin() {
+  setOptions()
+  console.log('check Even win')
   if (evenOptions[actualEven] !== 0) {
     const winNumber = evenOptions[actualEven] * 2
     setTimeout(() => {
@@ -1330,7 +1541,9 @@ const checkEvenWin = () => {
   }
 }
 
-const checkColorWin = () => {
+function checkColorWin() {
+  setOptions()
+  console.log('check Color win')
   if (colorOptions[actualColor] !== 0) {
     const winNumber = colorOptions[actualColor] * 2
     setTimeout(() => {
@@ -1340,16 +1553,6 @@ const checkColorWin = () => {
   for (let i = 0; i < colorOptions.length; i++) {
     colorOptions[i] = 0
   }
-}
-
-if (actualNumber !== 0) {
-  checkColumnWin()
-  checkRowWin()
-  checkHalfWin()
-  checkEvenWin()
-  checkColorWin()
-} else {
-  resetAllArrays()
 }
 
 // last numbers
@@ -1381,6 +1584,7 @@ const lastNumbersSetters = [
 const lastNumberColors = []
 
 const displayLastNumbers = () => {
+  lastNumbers.push(actualNumber)
   if (lastNumbers.length > 10) {
     lastNumbers.pop()
     lastNumberColors.pop()

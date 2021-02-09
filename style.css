@@ -181,15 +181,21 @@ footer {
   bottom: 10%;
   right: 90%;
   margin: -40px 0 0 30px;
-  border: 1px solid rgb(238, 236, 227);
-  border-radius: 5px;
+  border: 2px solid white;
+  border-radius: 10px;
   font-size: 2rem;
   max-width: 80px;
   text-align: center;
-  color: rgb(14, 13, 13);
+  color: rgb(150, 5, 5);
+  font-family: Arial, Helvetica, sans-serif;
   padding: 5px 10px;
-  background-color: rgb(168, 15, 15);
+  background-color: rgb(15, 15, 15);
+  opacity: 0.8;
   cursor: pointer;
+}
+#play:hover {
+  opacity: 1;
+  transform: scale(1.2);
 }
 
 .bet-size {
