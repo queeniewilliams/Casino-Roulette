@@ -119,7 +119,6 @@ const numberOptions = [
   0
 ]
 //insert bet
-
 const insertBet = (number) => {
   if (betSize === 1) {
     console.log('betsize1')
@@ -1083,8 +1082,8 @@ const playTable = () => {
   }, 12000)
 }
 
-const displayWin = (win) => {
-  money = money + win
+const displayWin = () => {
+  money = money + betSize
   moneyDisplay.innerHTML = `${money}`
 }
 // check win
