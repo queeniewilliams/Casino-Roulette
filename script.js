@@ -201,6 +201,7 @@ resetBetButton.addEventListener('click', function () {
   moneyDisplay.innerHTML = `${money}`
   actualBet = 0
   resetBetButton.style.display = 'none'
+
   resetAllArrays()
 })
 
@@ -1375,6 +1376,7 @@ function checkWin() {
   setTimeout(() => {
     document.querySelectorAll('.number-bet').forEach((chip) => chip.remove())
     displayLastNumbers()
+    changeDisplay.style.display = 'none'
   }, 1000)
 }
 
