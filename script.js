@@ -1539,13 +1539,9 @@ function checkNumberWin() {
   console.log('check num win')
   if (numberOptions[actualNumber] !== 0) {
     winNumber = numberOptions[actualNumber] * 36
-    displayWin(winNumber)
-    // if ((winNumber = numberOptions[actualNumber] * 36)) {
-    //   money = moneyBeforePlay + betSize + 35
-    // } else {
-    //   money = moneyBeforePlay - actualBet
-    // }
-    // moneyDisplay.innerHTML = `${money}`
+    setTimeout(() => {
+      displayWin(winNumber)
+    }, 10000)
   }
   for (let i = 0; i < numberOptions.length; i++) {
     numberOptions[i] = 0
@@ -1736,14 +1732,14 @@ function checkColumnWin() {
   if (columnOptions[actualColumn] !== 0) {
     winNumber = columnOptions[actualColumn] * 3
     setTimeout(() => {
-      // displayWin(winNumber)
-      if ((winNumber = columnOptions[actualColumn] * 3)) {
-        money = moneyBeforePlay + betSize + 2
-      } else {
-        money = moneyBeforePlay - actualBet
-      }
-      moneyDisplay.innerHTML = `${money}`
-    }, 10)
+      displayWin(winNumber)
+      // if ((winNumber = columnOptions[actualColumn] * 3)) {
+      //   money = moneyBeforePlay + betSize + 2
+      // } else {
+      //   money = moneyBeforePlay - actualBet
+      // }
+      // moneyDisplay.innerHTML = `${money}`
+    }, 10010)
   }
   for (let i = 0; i < columnOptions.length; i++) {
     columnOptions[i] = 0
@@ -1763,7 +1759,7 @@ function checkRowWin() {
       //   money = moneyBeforePlay - actualBet
       // }
       // moneyDisplay.innerHTML = `${money}`
-    }, 20)
+    }, 10020)
   }
   for (let i = 0; i < rowOptions.length; i++) {
     rowOptions[i] = 0
@@ -1783,7 +1779,7 @@ function checkHalfWin() {
       //   money = moneyBeforePlay - actualBet
       // }
       // moneyDisplay.innerHTML = `${money}`
-    }, 30)
+    }, 10030)
   }
   for (let i = 0; i < halfOptions.length; i++) {
     halfOptions[i] = 0
@@ -1803,7 +1799,7 @@ function checkEvenWin() {
       //   money = moneyBeforePlay - actualBet
       // }
       // moneyDisplay.innerHTML = `${money}`
-    }, 40)
+    }, 10040)
   }
   for (let i = 0; i < evenOptions.length; i++) {
     evenOptions[i] = 0
@@ -1824,7 +1820,7 @@ function checkColorWin() {
       //   money = moneyBeforePlay - actualBet
       // }
       // moneyDisplay.innerHTML = `${money}`
-    }, 50)
+    }, 10050)
   }
   for (let i = 0; i < colorOptions.length; i++) {
     colorOptions[i] = 0
