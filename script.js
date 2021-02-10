@@ -144,6 +144,37 @@ const insertBet = (number) => {
   }
 }
 
+buttonSound = document.querySelector('.button')
+buttonSound.volume = 0.9
+bet1.addEventListener('click', function () {
+  if (buttonSound.paused) {
+    buttonSound.play()
+  } else {
+    buttonSound.pause()
+  }
+})
+bet10.addEventListener('click', function () {
+  if (buttonSound.paused) {
+    buttonSound.play()
+  } else {
+    buttonSound.pause()
+  }
+})
+bet100.addEventListener('click', function () {
+  if (buttonSound.paused) {
+    buttonSound.play()
+  } else {
+    buttonSound.pause()
+  }
+})
+bet500.addEventListener('click', function () {
+  if (buttonSound.paused) {
+    buttonSound.play()
+  } else {
+    buttonSound.pause()
+  }
+})
+
 const addToNumberOptions = (number) => {
   numberOptions[number] += betSize
 }
@@ -829,6 +860,16 @@ playBtn.addEventListener('click', () => {
   console.log('click')
   spin()
 })
+
+wheelSound = document.querySelector('.spinning')
+wheelSound.volume = 1
+playBtn.addEventListener('click', function () {
+  if (wheelSound.paused) {
+    wheelSound.play()
+  } else {
+    wheelSound.pause()
+  }
+})
 // let slice26 = {
 //   min: 0,
 //   max: 9.72,
@@ -1313,18 +1354,34 @@ function checkWin() {
   }, 1000)
 }
 
-const totalWin = win + win
-const displayWin = (win) => {
-  money = money + totalWin - actualBet
-  moneyDisplay.innerHTML = `${money}`
-}
+// const arrFunction = []
+// arrFunction.push(checkColorWin)
+// arrFunction.push(checkColumnWin)
+// arrFunction.push(checkRowWin)
+// arrFunction.push(checkHalfWin)
+// arrFunction.push(checkEvenWin)
+// arrFunction.push(checkColorWin)
+
+// arrFunction.forEach((win) => {
+//   totalWin = win + win
+// })
+
+// const displayWin = (win) => {
+//   money = money + win - actualBet
+//   moneyDisplay.innerHTML = `${money}`
+// }
 
 function checkNumberWin() {
   console.log('check num win')
   if (numberOptions[actualNumber] !== 0) {
-    const winNumber = numberOptions[actualNumber] * 36
-    displayWin(winNumber)
-    win = betSize + 35
+    winNumber = numberOptions[actualNumber] * 36
+    // displayWin(winNumber)
+    if ((winNumber = numberOptions[actualNumber] * 36)) {
+      money = moneyBeforePlay + betSize + 35
+    } else {
+      money = moneyBeforePlay - actualBet
+    }
+    moneyDisplay.innerHTML = `${money}`
   }
   for (let i = 0; i < numberOptions.length; i++) {
     numberOptions[i] = 0
@@ -1513,10 +1570,15 @@ function checkColumnWin() {
   setOptions()
   console.log('check column win')
   if (columnOptions[actualColumn] !== 0) {
-    const winNumber = columnOptions[actualColumn] * 3
+    winNumber = columnOptions[actualColumn] * 3
     setTimeout(() => {
-      displayWin(winNumber)
-      win = betSize + 2
+      // displayWin(winNumber)
+      if ((winNumber = columnOptions[actualColumn] * 3)) {
+        money = moneyBeforePlay + betSize + 2
+      } else {
+        money = moneyBeforePlay - actualBet
+      }
+      moneyDisplay.innerHTML = `${money}`
     }, 10)
   }
   for (let i = 0; i < columnOptions.length; i++) {
@@ -1528,10 +1590,15 @@ function checkRowWin() {
   setOptions()
   console.log('check row win')
   if (rowOptions[actualRow] !== 0) {
-    const winNumber = rowOptions[actualRow] * 3
+    winNumber = rowOptions[actualRow] * 3
     setTimeout(() => {
-      displayWin(winNumber)
-      win = betSize + 2
+      // displayWin(winNumber)
+      if ((winNumber = rowOptions[actualRow] * 3)) {
+        money = moneyBeforePlay + betSize + 2
+      } else {
+        money = moneyBeforePlay - actualBet
+      }
+      moneyDisplay.innerHTML = `${money}`
     }, 20)
   }
   for (let i = 0; i < rowOptions.length; i++) {
@@ -1543,10 +1610,15 @@ function checkHalfWin() {
   setOptions()
   console.log('check half win')
   if (halfOptions[actualHalf] !== 0) {
-    const winNumber = halfOptions[actualHalf] * 2
+    winNumber = halfOptions[actualHalf] * 2
     setTimeout(() => {
-      displayWin(winNumber)
-      win = betSize + 1
+      // displayWin(winNumber)
+      if ((winNumber = halfOptions[actualHalf] * 2)) {
+        money = moneyBeforePlay + betSize + 1
+      } else {
+        money = moneyBeforePlay - actualBet
+      }
+      moneyDisplay.innerHTML = `${money}`
     }, 30)
   }
   for (let i = 0; i < halfOptions.length; i++) {
@@ -1558,10 +1630,15 @@ function checkEvenWin() {
   setOptions()
   console.log('check Even win')
   if (evenOptions[actualEven] !== 0) {
-    const winNumber = evenOptions[actualEven] * 2
+    winNumber = evenOptions[actualEven] * 2
     setTimeout(() => {
-      displayWin(winNumber)
-      win = betSize + 1
+      // displayWin(winNumber)
+      if ((winNumber = evenOptions[actualEven] * 2)) {
+        money = moneyBeforePlay + betSize + 1
+      } else {
+        money = moneyBeforePlay - actualBet
+      }
+      moneyDisplay.innerHTML = `${money}`
     }, 40)
   }
   for (let i = 0; i < evenOptions.length; i++) {
@@ -1573,10 +1650,16 @@ function checkColorWin() {
   setOptions()
   console.log('check Color win')
   if (colorOptions[actualColor] !== 0) {
-    const winNumber = colorOptions[actualColor] * 2
+    winNumber = colorOptions[actualColor] * 2
+    console.log(winNumber)
     setTimeout(() => {
-      displayWin(winNumber)
-      win = betSize + 1
+      // displayWin(winNumber)
+      if ((winNumber = colorOptions[actualColor] * 2)) {
+        money = moneyBeforePlay + betSize + 1
+      } else {
+        money = moneyBeforePlay - actualBet
+      }
+      moneyDisplay.innerHTML = `${money}`
     }, 50)
   }
   for (let i = 0; i < colorOptions.length; i++) {

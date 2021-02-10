@@ -34,7 +34,6 @@ a {
   background-color: black;
   color: rgb(179, 9, 9);
   opacity: 0.5;
-  transition: all 5s ease-in-out;
 }
 #enter:hover {
   opacity: 1;
