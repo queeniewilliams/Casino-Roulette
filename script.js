@@ -821,7 +821,8 @@ const spin = () => {
   let isWheelSpin = true
   let deg = 0
   playBtn.style.pointerEvents = 'none'
-  deg = 0 + Math.random() * 360
+  // deg = 0 + Math.random() * 360
+  deg = Math.random() * (0 - 360) + 360
   actualDeg = deg
   // wheel.style.transform = `rotate(${actualDeg}deg)`
   console.log(deg)
@@ -844,6 +845,7 @@ const spin = () => {
       if (actualNumber !== 0 && actualNumber !== null) {
         console.log('made it here')
         checkWin()
+        checkChange()
       } else {
         resetAllArrays()
       }
@@ -1341,6 +1343,28 @@ const resetAllArrays = () => {
 // }
 
 // check win
+let changeMoney = 0
+
+const changeDisplay = document.getElementById('change')
+const checkChange = () => {
+  setTimeout(() => {
+    changeMoney = money - moneyBeforePlay
+    changeDisplay.innerHTML = `${changeMoney}`
+    changeDisplay.style.display = 'block'
+    changeDisplayColor()
+    moneyBeforePlay = money
+  }, 200)
+}
+
+const changeDisplayColor = () => {
+  if (changeMoney < 0) {
+    changeDisplay.style.color = 'red'
+  } else {
+    changeDisplay.style.color = 'green'
+    changeDisplay.innerHTML = `+${changeMoney}`
+  }
+}
+
 function checkWin() {
   checkNumberWin()
   checkColumnWin()
@@ -1715,6 +1739,21 @@ const displayLastNumbers = () => {
     lastNumbersSetters[i].style.color = lastNumberColors[i]
   }
 }
+
+// playBtn.addEventListener('click', () => {
+//   console.log('click')
+//   spin()
+// })
+
+// wheelSound = document.querySelector('.spinning')
+// wheelSound.volume = 1
+// playBtn.addEventListener('click', function () {
+//   if (wheelSound.paused) {
+//     wheelSound.play()
+//   } else {
+//     wheelSound.pause()
+//   }
+// })
 
 //switch mode
 
