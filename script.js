@@ -693,7 +693,7 @@ const addToHalfOptions = (number) => {
 firstHalf.addEventListener('click', function () {
   if (checkMoney() && !gameIsOn) {
     insertBet(firstHalf)
-    addToRowOptions(0)
+    addToHalfOptions(0)
     subtractMoney()
   } else if (gameIsOn) {
     alert("You can't bet now!")
@@ -704,7 +704,7 @@ firstHalf.addEventListener('click', function () {
 secondHalf.addEventListener('click', function () {
   if (checkMoney() && !gameIsOn) {
     insertBet(secondHalf)
-    addToRowOptions(1)
+    addToHalfOptions(1)
     subtractMoney()
   } else if (gameIsOn) {
     alert("You can't bet now!")
@@ -1278,6 +1278,27 @@ const resetAllArrays = () => {
   }
 }
 
+// const changeNumber = () => {
+//   const changedNumber = spinResult
+//   setTimeout(() => {
+//     spin()
+//   }, 50)
+// }
+
+// const playGame = () => {
+//   const playTime = setInterval(changeNumber, 500)
+//   gameIsOn = true
+//   resetBetButton.style.display = 'none'
+//   setTimeout(() => {
+//     clearInterval(playTime)
+//     spinResult()
+//     alreadyPlayed = true
+//     checkWin()
+//     gameIsOn = false
+//     actualBet = 0
+//   }, 12000)
+// }
+
 // check win
 function checkWin() {
   checkNumberWin()
@@ -1291,8 +1312,10 @@ function checkWin() {
     displayLastNumbers()
   }, 1000)
 }
+
+const totalWin = win + win
 const displayWin = (win) => {
-  money = money - betSize + win
+  money = money + totalWin - actualBet
   moneyDisplay.innerHTML = `${money}`
 }
 
@@ -1301,6 +1324,7 @@ function checkNumberWin() {
   if (numberOptions[actualNumber] !== 0) {
     const winNumber = numberOptions[actualNumber] * 36
     displayWin(winNumber)
+    win = betSize + 35
   }
   for (let i = 0; i < numberOptions.length; i++) {
     numberOptions[i] = 0
@@ -1492,6 +1516,7 @@ function checkColumnWin() {
     const winNumber = columnOptions[actualColumn] * 3
     setTimeout(() => {
       displayWin(winNumber)
+      win = betSize + 2
     }, 10)
   }
   for (let i = 0; i < columnOptions.length; i++) {
@@ -1506,6 +1531,7 @@ function checkRowWin() {
     const winNumber = rowOptions[actualRow] * 3
     setTimeout(() => {
       displayWin(winNumber)
+      win = betSize + 2
     }, 20)
   }
   for (let i = 0; i < rowOptions.length; i++) {
@@ -1520,6 +1546,7 @@ function checkHalfWin() {
     const winNumber = halfOptions[actualHalf] * 2
     setTimeout(() => {
       displayWin(winNumber)
+      win = betSize + 1
     }, 30)
   }
   for (let i = 0; i < halfOptions.length; i++) {
@@ -1534,6 +1561,7 @@ function checkEvenWin() {
     const winNumber = evenOptions[actualEven] * 2
     setTimeout(() => {
       displayWin(winNumber)
+      win = betSize + 1
     }, 40)
   }
   for (let i = 0; i < evenOptions.length; i++) {
@@ -1548,6 +1576,7 @@ function checkColorWin() {
     const winNumber = colorOptions[actualColor] * 2
     setTimeout(() => {
       displayWin(winNumber)
+      win = betSize + 1
     }, 50)
   }
   for (let i = 0; i < colorOptions.length; i++) {
