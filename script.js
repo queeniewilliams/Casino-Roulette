@@ -1385,43 +1385,53 @@ let isSpinComplete = false
 let isWheelSpin = false
 const playBtn = document.querySelector('#play')
 let actualDeg
-const spin = () => {
+;(function spin() {
   const wheel = document.querySelector('.wheel')
   let isWheelSpin = true
   let deg = 0
-  let arc = Math.PI / (sliceArr.length / 2)
-  playBtn.style.pointerEvents = 'none'
-  let randomDeg = (deg * 180) / Math.PI + 90
-  deg = randomDeg * 10
-  console.log(randomDeg, deg)
-  let remainder = Math.floor(360 - (deg % 360)) / ((arc * 180) / Math.PI)
-  console.log(deg, remainder)
-  // console.log(randomDeg, remainder)
-  actualDeg = remainder
-  wheel.style.transition = `all 10s ease-out`
-  wheel.style.transform = `rotate(${deg}deg)`
-  wheel.classList.add('blur')
-  setTimeout(() => {
-    isSpinComplete = true
-    if (isSpinComplete) {
-      spinResult(actualDeg)
-      if (actualNumber !== 0 && actualNumber !== null) {
-        console.log('made it here')
-        checkWin()
-        checkChange()
-        setTimeout(() => {
-          displayLastNumbers()
-        }, 10000)
-      } else {
-        resetAllArrays()
+  playBtn.addEventListener('click', () => {
+    let arc = Math.PI / (sliceArr.length / 2)
+    playBtn.style.pointerEvents = 'none'
+    let randomDeg = (deg * 180) / Math.PI + 90
+    deg = randomDeg * 10
+    console.log(randomDeg, deg)
+    let remainder = Math.floor(360 - (deg % 360)) / ((arc * 180) / Math.PI)
+    console.log(deg, remainder)
+    // console.log(randomDeg, remainder)
+    actualDeg = remainder
+    wheel.style.transition = `all 10s ease-out`
+    wheel.style.transform = `rotate(${deg}deg)`
+    wheel.classList.add('blur')
+    setTimeout(() => {
+      isSpinComplete = true
+      if (isSpinComplete) {
+        spinResult(actualDeg)
+        if (actualNumber !== 0 && actualNumber !== null) {
+          console.log('made it here')
+          checkWin()
+          checkChange()
+          setTimeout(() => {
+            displayLastNumbers()
+            playBtn.style.pointerEvents = 'auto'
+          }, 10000)
+          setTimeout(() => {
+            wheel.style.transform = `rotate(${0}deg)`
+            wheel.style.transition = `all 2s ease-out`
+          }, 12000)
+        } else {
+          resetAllArrays()
+        }
       }
-    }
-  }, 1000)
-}
+    }, 1000)
+  })
+})()
+// playBtn.addEventListener('click', function () {
+//   spin()
+//   setTimeout(() => {
+//     playBtn.style.pointerEvents = 'auto'
+//   }, 10000)
+// })
 
-playBtn.addEventListener('click', () => {
-  spin()
-})
 wheelSound = document.querySelector('.spinning')
 wheelSound.volume = 1
 playBtn.addEventListener('click', function () {
