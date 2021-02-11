@@ -20,10 +20,12 @@ Welcome to **_CASINO ROULETTE_**, the place where you can be your own pit boss a
 
 ### **_KEY FEATURES_**
 
+- welcome page
 - spinning roulette wheel
 - switch between day/night mode
 - chip size: 1, 10, 100, 500
-- balance, last numbers, and probabilities
+- balance, payout, & last numbers
+- background sound
 
 ---
 
@@ -46,7 +48,11 @@ Welcome to **_CASINO ROULETTE_**, the place where you can be your own pit boss a
 
 Reference : [How to build spinning wheel of fortune](https://youtu.be/KdFp12QX-Io)
 
-![wheel](https://i.ibb.co/RTFMXSN/Clipart-Key-2608354.png)
+- **Wheel**
+  ![wheel](https://i.ibb.co/mRVBSS9/Clipart-Key-419585-copy.png)
+
+- **Logic**
+  ![logic](https://i.ibb.co/wCykdzP/Screen-Shot-2021-02-08-at-6-18-21-PM.png)
 
 ### **III. Bet Amount**
 
@@ -54,13 +60,14 @@ Reference : [How to build spinning wheel of fortune](https://youtu.be/KdFp12QX-I
 - [x] check money & game on
 - [x] place bet
 
-### **III. Last Numbers & Probabilities**
+### **III. Last Numbers**
 
 - last 10 numbers
-- - prob color ? red : black
-  - prob even ? odd : even
-  - prob row ? up : middle : down
-  - prob column ? 1st : 2nd : 3rd
+
+### **IV. Balance & Payout**
+
+- balance = moneyBeforePlay -/+ loss/win
+- payout = win/loss
 
 ---
 

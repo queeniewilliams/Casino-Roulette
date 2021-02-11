@@ -204,6 +204,7 @@ resetBetButton.addEventListener('click', function () {
   resetAllArrays()
 })
 
+//check balance before insert chips
 const checkMoney = () => {
   if (betSize === 1 && money >= 1) {
     return true
@@ -815,8 +816,6 @@ let isWheelSpin = false
 const playBtn = document.querySelector('#play')
 let actualDeg
 ;(function spin() {
-  console.log('inside spin')
-  console.log('spinning')
   const wheel = document.querySelector('.wheel')
   let isWheelSpin = true
   let deg = 0
@@ -827,16 +826,9 @@ let actualDeg
     actualDeg = deg
     // wheel.style.transform = `rotate(${actualDeg}deg)`
     console.log(deg)
-    wheel.style.transition = 'all 2s ease-out'
+    wheel.style.transition = 'all 10s ease-out'
     wheel.style.transform = `rotate(${deg}deg)`
     wheel.classList.add('blur')
-    // if (insertBet()) {
-    // wheel.addEventListener('transitionend', () => {
-    //   console.log('trasitionend')
-    //   wheel.classList.remove('blur')
-    //   playBtn.style.pointerEvents = 'auto'
-    //   wheel.style.transition = 'none'
-    // })
     setTimeout(() => {
       isSpinComplete = true
       if (isSpinComplete) {
@@ -861,10 +853,6 @@ let actualDeg
     }, 11000)
     deg = 0
     console.log(deg)
-    // } else {
-    //   console.log('pls insert bet')
-    //   alert(`Please insert bet before start Play`)
-    // }
   })
 })()
 
@@ -882,194 +870,6 @@ playBtn.addEventListener('click', function () {
     wheelSound.pause()
   }
 })
-
-// // let slice26 = {
-// //   min: 0,
-// //   max: 9.72,
-// //   value: 26
-// // }
-// // let slice3 = {
-// //   min: 9.72,
-// //   max: 19.44,
-// //   value: 3
-// // }
-// // let slice35 = {
-// //   min: 19.44,
-// //   max: 29.16,
-// //   value: 35
-// // }
-// // let slice12 = {
-// //   min: 29.16,
-// //   max: 38.88,
-// //   value: 12
-// // }
-
-// // let slice28 = {
-// //   min: 38.88,
-// //   max: 48.6,
-// //   value: 28
-// // }
-// // let slice7 = {
-// //   min: 48.6,
-// //   max: 58.32,
-// //   value: 7
-// // }
-// // let slice29 = {
-// //   min: 58.32,
-// //   max: 68.04,
-// //   value: 29
-// // }
-// // let slice18 = {
-// //   min: 68.04,
-// //   max: 77.76,
-// //   value: 18
-// // }
-// // let slice22 = {
-// //   min: 77.76,
-// //   max: 87.48,
-// //   value: 22
-// // }
-// // let slice9 = {
-// //   min: 87.48,
-// //   max: 97.2,
-// //   value: 9
-// // }
-// // let slice31 = {
-// //   min: 97.2,
-// //   max: 106.92,
-// //   value: 31
-// // }
-// // let slice14 = {
-// //   min: 106.92,
-// //   max: 116.64,
-// //   value: 14
-// // }
-
-// // let slice20 = {
-// //   min: 116.64,
-// //   max: 126.36,
-// //   value: 20
-// // }
-// // let slice1 = {
-// //   min: 126.36,
-// //   max: 136.08,
-// //   value: 1
-// // }
-// // let slice33 = {
-// //   min: 136.08,
-// //   max: 145.8,
-// //   value: 33
-// // }
-// // let slice16 = {
-// //   min: 145.8,
-// //   max: 155.52,
-// //   value: 16
-// // }
-// // let slice24 = {
-// //   min: 155.52,
-// //   max: 165.24,
-// //   value: 24
-// // }
-// // let slice5 = {
-// //   min: 165.24,
-// //   max: 174.96,
-// //   value: 5
-// // }
-// // let slice10 = {
-// //   min: 174.96,
-// //   max: 184.68,
-// //   value: 10
-// // }
-// // let slice23 = {
-// //   min: 184.68,
-// //   max: 194.4,
-// //   value: 23
-// // }
-// // let slice8 = {
-// //   min: 194.4,
-// //   max: 204.12,
-// //   value: 8
-// // }
-// // let slice30 = {
-// //   min: 204.12,
-// //   max: 213.84,
-// //   value: 30
-// // }
-// // let slice11 = {
-// //   min: 213.84,
-// //   max: 223.56,
-// //   value: 11
-// // }
-// // let slice36 = {
-// //   min: 223.56,
-// //   max: 233.28,
-// //   value: 36
-// // }
-// // let slice13 = {
-// //   min: 233.28,
-// //   max: 243,
-// //   value: 13
-// // }
-// // let slice27 = {
-// //   min: 243,
-// //   max: 252.72,
-// //   value: 27
-// // }
-// // let slice6 = {
-// //   min: 252.72,
-// //   max: 262.44,
-// //   value: 6
-// // }
-// // let slice34 = {
-// //   min: 262.44,
-// //   max: 272.16,
-// //   value: 34
-// // }
-// // let slice17 = {
-// //   min: 272.16,
-// //   max: 281.88,
-// //   value: 17
-// // }
-// // let slice25 = {
-// //   min: 281.88,
-// //   max: 291.6,
-// //   value: 25
-// // }
-// // let slice2 = {
-// //   min: 291.6,
-// //   max: 301.32,
-// //   value: 2
-// // }
-// // let slice21 = {
-// //   min: 301.32,
-// //   max: 311.04,
-// //   value: 21
-// // }
-// // let slice4 = {
-// //   min: 311.04,
-// //   max: 320.76,
-// //   value: 4
-// // }
-// // let slice19 = {
-// //   min: 320.76,
-// //   max: 330.48,
-// //   value: 19
-// // }
-// // let slice15 = {
-// //   min: 330.48,
-// //   max: 340.2,
-// //   value: 15
-// // }
-// // let slice32 = {
-// //   min: 340.2,
-// //   max: 349.92,
-// //   value: 35
-// // }
-// // let slice0 = {
-// //   min: 349.92,
-// //   max: 360,
-// //   value: 36
-// // }
 
 let slice0 = {
   min: 0,
@@ -1483,33 +1283,12 @@ const resetAllArrays = () => {
   }
 }
 
-// const changeNumber = () => {
-//   const changedNumber = spinResult
-//   setTimeout(() => {
-//     spin()
-//   }, 50)
-// }
-
-// const playGame = () => {
-//   const playTime = setInterval(changeNumber, 500)
-//   gameIsOn = true
-//   resetBetButton.style.display = 'none'
-//   setTimeout(() => {
-//     clearInterval(playTime)
-//     spinResult()
-//     alreadyPlayed = true
-//     checkWin()
-//     gameIsOn = false
-//     actualBet = 0
-//   }, 12000)
-// }
-
-// check win
+// check win & check payout
 
 let changeMoney = 0
 
 const changeDisplay = document.getElementById('change')
-const checkChange = () => {
+const checkPayout = () => {
   console.log(money, moneyBeforePlay)
   changeMoney = money - moneyBeforePlay
   changeDisplay.innerHTML = `${changeMoney}`
@@ -1535,7 +1314,7 @@ function checkWin() {
   checkColorWin()
   setTimeout(() => {
     document.querySelectorAll('.number-bet').forEach((chip) => chip.remove())
-    checkChange()
+    checkPayout()
     setTimeout(() => {
       changeDisplay.style.display = 'none'
     }, 1000)
@@ -1857,21 +1636,6 @@ const displayLastNumbers = () => {
     lastNumbersSetters[i].style.color = lastNumberColors[i]
   }
 }
-
-// playBtn.addEventListener('click', () => {
-//   console.log('click')
-//   spin()
-// })
-
-// wheelSound = document.querySelector('.spinning')
-// wheelSound.volume = 1
-// playBtn.addEventListener('click', function () {
-//   if (wheelSound.paused) {
-//     wheelSound.play()
-//   } else {
-//     wheelSound.pause()
-//   }
-// })
 
 //switch mode
 
