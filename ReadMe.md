@@ -76,4 +76,4 @@ Reference : [How to build spinning wheel of fortune](https://youtu.be/KdFp12QX-I
 ---
 
 [Here is my Trello](https://trello.com/b/Ymcmnkpt/casino-roulette)
-![preview](https://i.ibb.co/3Tkc7wk/Screen-Shot-2021-02-07-at-10-17-34-AM.png)
+![preview](https://i.ibb.co/wzwRbtW/Screen-Shot-2021-02-11-at-12-05-23-PM.png)
