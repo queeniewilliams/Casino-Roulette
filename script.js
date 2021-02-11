@@ -824,7 +824,7 @@ let actualDeg
     deg = Math.random() * (0 - 360) + 360
     actualDeg = deg
     console.log(deg)
-    wheel.style.transition = 'all 1s ease-out'
+    wheel.style.transition = 'all 10s ease-out'
     wheel.style.transform = `rotate(${deg}deg)`
     wheel.classList.add('blur')
     setTimeout(() => {

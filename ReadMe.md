@@ -71,9 +71,19 @@ Reference : [How to build spinning wheel of fortune](https://youtu.be/KdFp12QX-I
 
 ---
 
-## **Trello**
+## **TRELLO**
 
 ---
 
 [Here is my Trello](https://trello.com/b/Ymcmnkpt/casino-roulette)
 ![preview](https://i.ibb.co/wzwRbtW/Screen-Shot-2021-02-11-at-12-05-23-PM.png)
+
+---
+
+## **PRESENTATION**
+
+---
+
+[Casino Roulette](https://cute-hydrant.surge.sh)
+![preview1](https://i.ibb.co/yNWDry3/Screen-Shot-2021-02-11-at-2-08-45-PM.png)
+![preview2](https://i.ibb.co/h1HR28y/Screen-Shot-2021-02-11-at-2-07-23-PM.png)
