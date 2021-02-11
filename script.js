@@ -145,7 +145,7 @@ const insertBet = (number) => {
 }
 
 buttonSound = document.querySelector('.button')
-buttonSound.volume = 0.9
+buttonSound.volume = 0.7
 bet1.addEventListener('click', function () {
   if (buttonSound.paused) {
     buttonSound.play()
@@ -806,72 +806,83 @@ black.addEventListener('click', function () {
   }
 })
 
-// let actualNumber = null
-// let alreadyPlayed = false
+let actualNumber = null
+let alreadyPlayed = false
 
-// //spinning wheel
-// let isSpinComplete = false
-// let isWheelSpin = false
-// const playBtn = document.querySelector('#play')
-// let actualDeg
-// const spin = () => {
-//   console.log('inside spin')
-//   console.log('spinning')
-//   const wheel = document.querySelector('.wheel')
-//   let isWheelSpin = true
-//   let deg = 0
-//   playBtn.style.pointerEvents = 'none'
-//   // deg = 0 + Math.random() * 360
-//   deg = Math.random() * (0 - 360) + 360
-//   actualDeg = deg
-//   // wheel.style.transform = `rotate(${actualDeg}deg)`
-//   console.log(deg)
-//   wheel.style.transition = 'all 1s ease-out'
-//   wheel.style.transform = `rotate(${deg}deg)`
-//   wheel.classList.add('blur')
-//   // if (insertBet()) {
-//   // wheel.addEventListener('transitionend', () => {
-//   //   console.log('trasitionend')
-//   //   wheel.classList.remove('blur')
-//   //   playBtn.style.pointerEvents = 'auto'
-//   //   wheel.style.transition = 'none'
-//   // })
-//   setTimeout(() => {
-//     isSpinComplete = true
-//     if (isSpinComplete) {
-//       console.log(actualDeg)
-//       spinResult()
-//       console.log(actualNumber)
-//       if (actualNumber !== 0 && actualNumber !== null) {
-//         console.log('made it here')
-//         checkWin()
-//         checkChange()
-//       } else {
-//         resetAllArrays()
-//       }
-//     }
-//   }, 1000)
-
-//   // } else {
-//   //   console.log('pls insert bet')
-//   //   alert(`Please insert bet before start Play`)
-//   // }
-// }
+//spinning wheel
+let isSpinComplete = false
+let isWheelSpin = false
+const playBtn = document.querySelector('#play')
+let actualDeg
+;(function spin() {
+  console.log('inside spin')
+  console.log('spinning')
+  const wheel = document.querySelector('.wheel')
+  let isWheelSpin = true
+  let deg = 0
+  playBtn.addEventListener('click', () => {
+    playBtn.style.pointerEvents = 'none'
+    // deg = 0 + Math.random() * 360
+    deg = Math.random() * (0 - 360) + 360
+    actualDeg = deg
+    // wheel.style.transform = `rotate(${actualDeg}deg)`
+    console.log(deg)
+    wheel.style.transition = 'all 2s ease-out'
+    wheel.style.transform = `rotate(${deg}deg)`
+    wheel.classList.add('blur')
+    // if (insertBet()) {
+    // wheel.addEventListener('transitionend', () => {
+    //   console.log('trasitionend')
+    //   wheel.classList.remove('blur')
+    //   playBtn.style.pointerEvents = 'auto'
+    //   wheel.style.transition = 'none'
+    // })
+    setTimeout(() => {
+      isSpinComplete = true
+      if (isSpinComplete) {
+        console.log(actualDeg)
+        spinResult()
+        console.log(actualNumber)
+        if (actualNumber !== 0 && actualNumber !== null) {
+          console.log('made it here')
+          checkWin()
+          setTimeout(() => {
+            displayLastNumbers()
+            playBtn.style.pointerEvents = 'auto'
+          }, 10000)
+        } else {
+          resetAllArrays()
+        }
+      }
+    }, 1000)
+    setTimeout(() => {
+      wheel.style.transform = `rotate(${0}deg)`
+      wheel.style.transition = `all 1s ease-out`
+    }, 11000)
+    deg = 0
+    console.log(deg)
+    // } else {
+    //   console.log('pls insert bet')
+    //   alert(`Please insert bet before start Play`)
+    // }
+  })
+})()
 
 // playBtn.addEventListener('click', () => {
 //   console.log('click')
 //   spin()
 // })
 
-// wheelSound = document.querySelector('.spinning')
-// wheelSound.volume = 1
-// playBtn.addEventListener('click', function () {
-//   if (wheelSound.paused) {
-//     wheelSound.play()
-//   } else {
-//     wheelSound.pause()
-//   }
-// })
+wheelSound = document.querySelector('.spinning')
+wheelSound.volume = 1
+playBtn.addEventListener('click', function () {
+  if (wheelSound.paused) {
+    wheelSound.play()
+  } else {
+    wheelSound.pause()
+  }
+})
+
 // // let slice26 = {
 // //   min: 0,
 // //   max: 9.72,
@@ -1059,379 +1070,373 @@ black.addEventListener('click', function () {
 // //   max: 360,
 // //   value: 36
 // // }
-// let slice0 = {
-//   min: 0,
-//   max: 4.86,
-//   value: 0
-// }
-// let slice26 = {
-//   min: 4.85,
-//   max: 14.58,
-//   value: 26
-// }
-// let slice3 = {
-//   min: 14.58,
-//   max: 24.3,
-//   value: 3
-// }
-// let slice35 = {
-//   min: 24.3,
-//   max: 34.02,
-//   value: 35
-// }
-// let slice12 = {
-//   min: 34.02,
-//   max: 43.74,
-//   value: 12
-// }
-// let slice28 = {
-//   min: 43.74,
-//   max: 52.94,
-//   value: 28
-// }
-// let slice7 = {
-//   min: 52.94,
-//   max: 62.66,
-//   value: 7
-// }
-// let slice29 = {
-//   min: 62.66,
-//   max: 72.38,
-//   value: 29
-// }
-// let slice18 = {
-//   min: 72.38,
-//   max: 82.1,
-//   value: 18
-// }
-// let slice22 = {
-//   min: 82.1,
-//   max: 91.82,
-//   value: 22
-// }
-// let slice9 = {
-//   min: 91.82,
-//   max: 101.54,
-//   value: 9
-// }
-// let slice31 = {
-//   min: 101.54,
-//   max: 111.26,
-//   value: 31
-// }
-// let slice14 = {
-//   min: 111.26,
-//   max: 120.98,
-//   value: 14
-// }
-// let slice20 = {
-//   min: 120.98,
-//   max: 130.7,
-//   value: 20
-// }
-// let slice1 = {
-//   min: 130.7,
-//   max: 140.42,
-//   value: 1
-// }
-// let slice33 = {
-//   min: 140.42,
-//   max: 150.14,
-//   value: 33
-// }
-// let slice16 = {
-//   min: 150.14,
-//   max: 159.86,
-//   value: 16
-// }
-// let slice24 = {
-//   min: 159.86,
-//   max: 169.58,
-//   value: 24
-// }
-// let slice5 = {
-//   min: 169.58,
-//   max: 179.3,
-//   value: 5
-// }
-// let slice10 = {
-//   min: 179.3,
-//   max: 189.02,
-//   value: 10
-// }
-// let slice23 = {
-//   min: 189.02,
-//   max: 198.74,
-//   value: 23
-// }
-// let slice8 = {
-//   min: 198.74,
-//   max: 208.46,
-//   value: 8
-// }
-// let slice30 = {
-//   min: 208.46,
-//   max: 218.18,
-//   value: 30
-// }
-// let slice11 = {
-//   min: 218.18,
-//   max: 227.9,
-//   value: 11
-// }
-// let slice36 = {
-//   min: 227.9,
-//   max: 237.62,
-//   value: 36
-// }
-// let slice13 = {
-//   min: 237.62,
-//   max: 247.34,
-//   value: 13
-// }
-// let slice27 = {
-//   min: 247.34,
-//   max: 257.06,
-//   value: 27
-// }
-// let slice6 = {
-//   min: 257.06,
-//   max: 266.78,
-//   value: 6
-// }
-// let slice34 = {
-//   min: 266.78,
-//   max: 276.5,
-//   value: 34
-// }
-// let slice17 = {
-//   min: 276.5,
-//   max: 286.22,
-//   value: 17
-// }
-// let slice25 = {
-//   min: 286.22,
-//   max: 295.94,
-//   value: 25
-// }
-// let slice2 = {
-//   min: 295.94,
-//   max: 305.66,
-//   value: 2
-// }
-// let slice21 = {
-//   min: 305.66,
-//   max: 315.38,
-//   value: 21
-// }
 
-// let slice4 = {
-//   min: 315.38,
-//   max: 325.1,
-//   value: 4
-// }
-// let slice19 = {
-//   min: 325.1,
-//   max: 334.82,
-//   value: 19
-// }
-// let slice15 = {
-//   min: 334.82,
-//   max: 344.54,
-//   value: 15
-// }
-// let slice32 = {
-//   min: 344.54,
-//   max: 354.26,
-//   value: 32
-// }
+let slice0 = {
+  min: 0,
+  max: 4.86,
+  value: 0
+}
+let slice26 = {
+  min: 4.85,
+  max: 14.58,
+  value: 26
+}
+let slice3 = {
+  min: 14.58,
+  max: 24.3,
+  value: 3
+}
+let slice35 = {
+  min: 24.3,
+  max: 34.02,
+  value: 35
+}
+let slice12 = {
+  min: 34.02,
+  max: 43.74,
+  value: 12
+}
+let slice28 = {
+  min: 43.74,
+  max: 52.94,
+  value: 28
+}
+let slice7 = {
+  min: 52.94,
+  max: 62.66,
+  value: 7
+}
+let slice29 = {
+  min: 62.66,
+  max: 72.38,
+  value: 29
+}
+let slice18 = {
+  min: 72.38,
+  max: 82.1,
+  value: 18
+}
+let slice22 = {
+  min: 82.1,
+  max: 91.82,
+  value: 22
+}
+let slice9 = {
+  min: 91.82,
+  max: 101.54,
+  value: 9
+}
+let slice31 = {
+  min: 101.54,
+  max: 111.26,
+  value: 31
+}
+let slice14 = {
+  min: 111.26,
+  max: 120.98,
+  value: 14
+}
+let slice20 = {
+  min: 120.98,
+  max: 130.7,
+  value: 20
+}
+let slice1 = {
+  min: 130.7,
+  max: 140.42,
+  value: 1
+}
+let slice33 = {
+  min: 140.42,
+  max: 150.14,
+  value: 33
+}
+let slice16 = {
+  min: 150.14,
+  max: 159.86,
+  value: 16
+}
+let slice24 = {
+  min: 159.86,
+  max: 169.58,
+  value: 24
+}
+let slice5 = {
+  min: 169.58,
+  max: 179.3,
+  value: 5
+}
+let slice10 = {
+  min: 179.3,
+  max: 189.02,
+  value: 10
+}
+let slice23 = {
+  min: 189.02,
+  max: 198.74,
+  value: 23
+}
+let slice8 = {
+  min: 198.74,
+  max: 208.46,
+  value: 8
+}
+let slice30 = {
+  min: 208.46,
+  max: 218.18,
+  value: 30
+}
+let slice11 = {
+  min: 218.18,
+  max: 227.9,
+  value: 11
+}
+let slice36 = {
+  min: 227.9,
+  max: 237.62,
+  value: 36
+}
+let slice13 = {
+  min: 237.62,
+  max: 247.34,
+  value: 13
+}
+let slice27 = {
+  min: 247.34,
+  max: 257.06,
+  value: 27
+}
+let slice6 = {
+  min: 257.06,
+  max: 266.78,
+  value: 6
+}
+let slice34 = {
+  min: 266.78,
+  max: 276.5,
+  value: 34
+}
+let slice17 = {
+  min: 276.5,
+  max: 286.22,
+  value: 17
+}
+let slice25 = {
+  min: 286.22,
+  max: 295.94,
+  value: 25
+}
+let slice2 = {
+  min: 295.94,
+  max: 305.66,
+  value: 2
+}
+let slice21 = {
+  min: 305.66,
+  max: 315.38,
+  value: 21
+}
 
-// const sliceArr = [
-//   slice0,
-//   slice26,
-//   slice3,
-//   slice35,
-//   slice12,
-//   slice28,
-//   slice7,
-//   slice29,
-//   slice18,
-//   slice22,
-//   slice9,
-//   slice31,
-//   slice14,
-//   slice20,
-//   slice1,
-//   slice33,
-//   slice16,
-//   slice24,
-//   slice5,
-//   slice10,
-//   slice23,
-//   slice8,
-//   slice30,
-//   slice11,
-//   slice36,
-//   slice13,
-//   slice27,
-//   slice6,
-//   slice34,
-//   slice17,
-//   slice25,
-//   slice2,
-//   slice21,
-//   slice4,
-//   slice19,
-//   slice15,
-//   slice32
-// ]
-// function spinResult() {
-//   sliceArr.forEach((slice) => {
-//     if (actualDeg >= 354.26 && actualDeg <= 360) {
-//       actualNumber = 0
-//       return actualNumber
-//     }
-//     if (actualDeg > slice.min && actualDeg < slice.max) {
-//       console.log('slice', slice.value)
-//       actualNumber = slice.value
-//       console.log('this is the result', actualNumber, slice.value)
-//     }
-//   })
-// }
+let slice4 = {
+  min: 315.38,
+  max: 325.1,
+  value: 4
+}
+let slice19 = {
+  min: 325.1,
+  max: 334.82,
+  value: 19
+}
+let slice15 = {
+  min: 334.82,
+  max: 344.54,
+  value: 15
+}
+let slice32 = {
+  min: 344.54,
+  max: 354.26,
+  value: 32
+}
 
 const sliceArr = [
-  { min: 0, max: 4.86, value: 0 },
-  { min: 4.86, max: 9.73, value: 26 },
-  { min: 9.73, max: 14.59, value: 26 },
-  { min: 14.59, max: 19.46, value: 3 },
-  { min: 19.46, max: 24.32, value: 3 },
-  { min: 24.32, max: 29.19, value: 35 },
-  { min: 29.19, max: 34.05, value: 35 },
-  { min: 34.05, max: 38.92, value: 12 },
-  { min: 38.92, max: 43.78, value: 12 },
-  { min: 43.78, max: 48.65, value: 28 },
-  { min: 48.65, max: 53.51, value: 28 },
-  { min: 53.51, max: 58.38, value: 7 },
-  { min: 58.38, max: 63.24, value: 7 },
-  { min: 63.24, max: 68.11, value: 29 },
-  { min: 68.11, max: 72.97, value: 29 },
-  { min: 72.97, max: 77.84, value: 18 },
-  { min: 77.84, max: 82.7, value: 18 },
-  { min: 82.7, max: 87.57, value: 22 },
-  { min: 87.57, max: 92.43, value: 22 },
-  { min: 92.43, max: 97.3, value: 9 },
-  { min: 97.3, max: 102.16, value: 9 },
-  { min: 102.16, max: 107.03, value: 31 },
-  { min: 107.03, max: 111.89, value: 31 },
-  { min: 111.89, max: 116.76, value: 14 },
-  { min: 116.76, max: 121.62, value: 14 },
-  { min: 121.62, max: 126.49, value: 20 },
-  { min: 126.49, max: 131.35, value: 20 },
-  { min: 131.35, max: 136.22, value: 1 },
-  { min: 136.22, max: 141.08, value: 1 },
-  { min: 141.08, max: 145.95, value: 33 },
-  { min: 145.95, max: 150.81, value: 33 },
-  { min: 150.81, max: 155.68, value: 16 },
-  { min: 155.68, max: 160.54, value: 16 },
-  { min: 160.54, max: 165.41, value: 24 },
-  { min: 165.41, max: 170.27, value: 24 },
-  { min: 170.27, max: 175.14, value: 5 },
-  { min: 175.14, max: 180, value: 5 },
-  { min: 180, max: 184.86, value: 10 },
-  { min: 184.86, max: 189.73, value: 10 },
-  { min: 189.73, max: 194.59, value: 23 },
-  { min: 194.59, max: 199.46, value: 23 },
-  { min: 199.46, max: 204.32, value: 8 },
-  { min: 204.32, max: 209.19, value: 8 },
-  { min: 209.19, max: 214.05, value: 30 },
-  { min: 214.05, max: 218.92, value: 30 },
-  { min: 218.92, max: 223.78, value: 11 },
-  { min: 223.78, max: 228.65, value: 11 },
-  { min: 228.65, max: 233.51, value: 36 },
-  { min: 233.51, max: 238.38, value: 36 },
-  { min: 238.38, max: 243.24, value: 13 },
-  { min: 243.24, max: 248.11, value: 13 },
-  { min: 248.11, max: 252.97, value: 27 },
-  { min: 252.97, max: 257.84, value: 27 },
-  { min: 257.84, max: 262.7, value: 6 },
-  { min: 262.7, max: 267.57, value: 6 },
-  { min: 267.57, max: 272.43, value: 34 },
-  { min: 272.43, max: 277.3, value: 34 },
-  { min: 277.3, max: 282.16, value: 17 },
-  { min: 282.16, max: 287.03, value: 17 },
-  { min: 287.03, max: 291.89, value: 25 },
-  { min: 291.89, max: 296.76, value: 25 },
-  { min: 296.76, max: 301.62, value: 2 },
-  { min: 301.62, max: 306.49, value: 2 },
-  { min: 306.49, max: 311.35, value: 21 },
-  { min: 311.35, max: 316.22, value: 21 },
-  { min: 316.22, max: 321.08, value: 4 },
-  { min: 321.08, max: 325.95, value: 4 },
-  { min: 325.95, max: 330.81, value: 19 },
-  { min: 330.81, max: 335.68, value: 19 },
-  { min: 335.68, max: 340.54, value: 15 },
-  { min: 340.54, max: 345.41, value: 15 },
-  { min: 345.41, max: 350.27, value: 32 },
-  { min: 350.27, max: 355.14, value: 32 },
-  { min: 355.14, max: 360, value: 0 }
+  slice0,
+  slice26,
+  slice3,
+  slice35,
+  slice12,
+  slice28,
+  slice7,
+  slice29,
+  slice18,
+  slice22,
+  slice9,
+  slice31,
+  slice14,
+  slice20,
+  slice1,
+  slice33,
+  slice16,
+  slice24,
+  slice5,
+  slice10,
+  slice23,
+  slice8,
+  slice30,
+  slice11,
+  slice36,
+  slice13,
+  slice27,
+  slice6,
+  slice34,
+  slice17,
+  slice25,
+  slice2,
+  slice21,
+  slice4,
+  slice19,
+  slice15,
+  slice32
 ]
-
-let actualNumber = null
-let alreadyPlayed = false
-
-//spinning wheel
-let isSpinComplete = false
-let isWheelSpin = false
-const playBtn = document.querySelector('#play')
-let actualDeg
-;(function spin() {
-  const wheel = document.querySelector('.wheel')
-  let isWheelSpin = true
-  let deg = 0
-  playBtn.addEventListener('click', () => {
-    let arc = Math.PI / (sliceArr.length / 2)
-    playBtn.style.pointerEvents = 'none'
-    let randomDeg = (deg * 180) / Math.PI + 90
-    deg = randomDeg * 10
-    console.log(randomDeg, deg)
-    let remainder = Math.floor(360 - (deg % 360)) / ((arc * 180) / Math.PI)
-    console.log(deg, remainder)
-    // console.log(randomDeg, remainder)
-    actualDeg = remainder
-    wheel.style.transition = `all 10s ease-out`
-    wheel.style.transform = `rotate(${deg}deg)`
-    wheel.classList.add('blur')
-    setTimeout(() => {
-      isSpinComplete = true
-      // setTimeout(() => {
-      //   wheel.style.transform = `rotate(${0}deg)`
-      //   wheel.style.transition = `all 2s ease-out`
-      // }, 11000)
-      // deg = 0
-      // console.log(deg)
-      if (isSpinComplete) {
-        spinResult(actualDeg)
-        if (actualNumber !== 0 && actualNumber !== null) {
-          console.log('made it here')
-          checkWin()
-          // checkChange()
-          setTimeout(() => {
-            displayLastNumbers()
-            playBtn.style.pointerEvents = 'auto'
-          }, 10000)
-        } else {
-          resetAllArrays()
-        }
-      }
-    }, 1000)
-    setTimeout(() => {
-      wheel.style.transform = `rotate(${0}deg)`
-      wheel.style.transition = `all 1s ease-out`
-    }, 12000)
-    deg = 0
-    console.log(deg)
+function spinResult() {
+  sliceArr.forEach((slice) => {
+    if (actualDeg >= 354.26 && actualDeg <= 360) {
+      actualNumber = 0
+      return actualNumber
+    }
+    if (actualDeg > slice.min && actualDeg < slice.max) {
+      console.log('slice', slice.value)
+      actualNumber = slice.value
+      console.log('this is the result', actualNumber, slice.value)
+    }
   })
-})()
+}
+
+// const sliceArr = [
+//   { min: 0, max: 4.86, value: 0 },
+//   { min: 4.86, max: 9.73, value: 26 },
+//   { min: 9.73, max: 14.59, value: 26 },
+//   { min: 14.59, max: 19.46, value: 3 },
+//   { min: 19.46, max: 24.32, value: 3 },
+//   { min: 24.32, max: 29.19, value: 35 },
+//   { min: 29.19, max: 34.05, value: 35 },
+//   { min: 34.05, max: 38.92, value: 12 },
+//   { min: 38.92, max: 43.78, value: 12 },
+//   { min: 43.78, max: 48.65, value: 28 },
+//   { min: 48.65, max: 53.51, value: 28 },
+//   { min: 53.51, max: 58.38, value: 7 },
+//   { min: 58.38, max: 63.24, value: 7 },
+//   { min: 63.24, max: 68.11, value: 29 },
+//   { min: 68.11, max: 72.97, value: 29 },
+//   { min: 72.97, max: 77.84, value: 18 },
+//   { min: 77.84, max: 82.7, value: 18 },
+//   { min: 82.7, max: 87.57, value: 22 },
+//   { min: 87.57, max: 92.43, value: 22 },
+//   { min: 92.43, max: 97.3, value: 9 },
+//   { min: 97.3, max: 102.16, value: 9 },
+//   { min: 102.16, max: 107.03, value: 31 },
+//   { min: 107.03, max: 111.89, value: 31 },
+//   { min: 111.89, max: 116.76, value: 14 },
+//   { min: 116.76, max: 121.62, value: 14 },
+//   { min: 121.62, max: 126.49, value: 20 },
+//   { min: 126.49, max: 131.35, value: 20 },
+//   { min: 131.35, max: 136.22, value: 1 },
+//   { min: 136.22, max: 141.08, value: 1 },
+//   { min: 141.08, max: 145.95, value: 33 },
+//   { min: 145.95, max: 150.81, value: 33 },
+//   { min: 150.81, max: 155.68, value: 16 },
+//   { min: 155.68, max: 160.54, value: 16 },
+//   { min: 160.54, max: 165.41, value: 24 },
+//   { min: 165.41, max: 170.27, value: 24 },
+//   { min: 170.27, max: 175.14, value: 5 },
+//   { min: 175.14, max: 180, value: 5 },
+//   { min: 180, max: 184.86, value: 10 },
+//   { min: 184.86, max: 189.73, value: 10 },
+//   { min: 189.73, max: 194.59, value: 23 },
+//   { min: 194.59, max: 199.46, value: 23 },
+//   { min: 199.46, max: 204.32, value: 8 },
+//   { min: 204.32, max: 209.19, value: 8 },
+//   { min: 209.19, max: 214.05, value: 30 },
+//   { min: 214.05, max: 218.92, value: 30 },
+//   { min: 218.92, max: 223.78, value: 11 },
+//   { min: 223.78, max: 228.65, value: 11 },
+//   { min: 228.65, max: 233.51, value: 36 },
+//   { min: 233.51, max: 238.38, value: 36 },
+//   { min: 238.38, max: 243.24, value: 13 },
+//   { min: 243.24, max: 248.11, value: 13 },
+//   { min: 248.11, max: 252.97, value: 27 },
+//   { min: 252.97, max: 257.84, value: 27 },
+//   { min: 257.84, max: 262.7, value: 6 },
+//   { min: 262.7, max: 267.57, value: 6 },
+//   { min: 267.57, max: 272.43, value: 34 },
+//   { min: 272.43, max: 277.3, value: 34 },
+//   { min: 277.3, max: 282.16, value: 17 },
+//   { min: 282.16, max: 287.03, value: 17 },
+//   { min: 287.03, max: 291.89, value: 25 },
+//   { min: 291.89, max: 296.76, value: 25 },
+//   { min: 296.76, max: 301.62, value: 2 },
+//   { min: 301.62, max: 306.49, value: 2 },
+//   { min: 306.49, max: 311.35, value: 21 },
+//   { min: 311.35, max: 316.22, value: 21 },
+//   { min: 316.22, max: 321.08, value: 4 },
+//   { min: 321.08, max: 325.95, value: 4 },
+//   { min: 325.95, max: 330.81, value: 19 },
+//   { min: 330.81, max: 335.68, value: 19 },
+//   { min: 335.68, max: 340.54, value: 15 },
+//   { min: 340.54, max: 345.41, value: 15 },
+//   { min: 345.41, max: 350.27, value: 32 },
+//   { min: 350.27, max: 355.14, value: 32 },
+//   { min: 355.14, max: 360, value: 0 }
+// ]
+
+// let actualNumber = null
+// let alreadyPlayed = false
+
+// //spinning wheel
+// let isSpinComplete = false
+// let isWheelSpin = false
+// const playBtn = document.querySelector('#play')
+// let actualDeg
+// ;(function spin() {
+//   const wheel = document.querySelector('.wheel')
+//   let isWheelSpin = true
+//   let deg = 0
+//   playBtn.addEventListener('click', () => {
+//     let arc = Math.PI / (sliceArr.length / 2)
+//     playBtn.style.pointerEvents = 'none'
+//     let randomDeg = (deg * 180) / Math.PI + 90
+//     deg = randomDeg * 10
+//     console.log(randomDeg, deg)
+//     let remainder = Math.floor(360 - (deg % 360)) / ((arc * 180) / Math.PI)
+//     console.log(deg, remainder)
+//     console.log(randomDeg, remainder)
+//     actualDeg = remainder
+//     wheel.style.transition = `all 10s ease-out`
+//     wheel.style.transform = `rotate(${deg}deg)`
+//     wheel.classList.add('blur')
+//     setTimeout(() => {
+//       isSpinComplete = true
+//       // setTimeout(() => {
+//       //   wheel.style.transform = `rotate(${0}deg)`
+//       //   wheel.style.transition = `all 2s ease-out`
+//       // }, 11000)
+//       // deg = 0
+//       // console.log(deg)
+//       if (isSpinComplete) {
+//         spinResult(actualDeg)
+//         if (actualNumber !== 0 && actualNumber !== null) {
+//           console.log('made it here')
+//           checkWin()
+//           // checkChange()
+//           setTimeout(() => {
+//             displayLastNumbers()
+//             playBtn.style.pointerEvents = 'auto'
+//           }, 10000)
+//         } else {
+//           resetAllArrays()
+//         }
+//       }
+//     }, 1000)
+// })()
 // playBtn.addEventListener('click', () => {
 //   spin()
 //   setTimeout(() => {
@@ -1439,21 +1444,22 @@ let actualDeg
 //   }, 10000)
 // })
 
-wheelSound = document.querySelector('.spinning')
-wheelSound.volume = 1
-playBtn.addEventListener('click', function () {
-  if (wheelSound.paused) {
-    wheelSound.play()
-  } else {
-    wheelSound.pause()
-  }
-})
+// wheelSound = document.querySelector('.spinning')
+// wheelSound.volume = 1
+// playBtn.addEventListener('click', function () {
+//   if (wheelSound.paused) {
+//     wheelSound.play()
+//   } else {
+//     wheelSound.pause()
+//   }
+// })
 
-function spinResult(targetDeg) {
-  let result = sliceArr[targetDeg].value
-  actualNumber = result
-  console.log(actualNumber)
-}
+// function spinResult(actualDeg) {
+//   console.log(actualDeg)
+//   let result = sliceArr[actualDeg].value
+//   actualNumber = result
+//   console.log(actualNumber)
+// }
 
 // reset all arrays
 const resetAllArrays = () => {
