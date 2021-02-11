@@ -196,12 +196,11 @@ const showResetBet = () => {
 }
 
 resetBetButton.addEventListener('click', function () {
-  document.querySelectorAll('.number-bet').forEach((bet) => bet.remove(bet))
+  document.querySelectorAll('.number-bet').forEach((bet) => bet.remove())
   money += actualBet
   moneyDisplay.innerHTML = `${money}`
   actualBet = 0
   resetBetButton.style.display = 'none'
-
   resetAllArrays()
 })
 
@@ -1415,8 +1414,7 @@ let actualDeg
         if (actualNumber !== 0 && actualNumber !== null) {
           console.log('made it here')
           checkWin()
-          checkChange()
-          ctualBet = 0
+          // checkChange()
           setTimeout(() => {
             displayLastNumbers()
             playBtn.style.pointerEvents = 'auto'
@@ -1428,13 +1426,13 @@ let actualDeg
     }, 1000)
     setTimeout(() => {
       wheel.style.transform = `rotate(${0}deg)`
-      wheel.style.transition = `all 2s ease-out`
-    }, 11000)
+      wheel.style.transition = `all 1s ease-out`
+    }, 12000)
     deg = 0
     console.log(deg)
   })
 })()
-// playBtn.addEventListener('click', function () {
+// playBtn.addEventListener('click', () => {
 //   spin()
 //   setTimeout(() => {
 //     playBtn.style.pointerEvents = 'auto'
@@ -1506,13 +1504,12 @@ let changeMoney = 0
 
 const changeDisplay = document.getElementById('change')
 const checkChange = () => {
-  setTimeout(() => {
-    changeMoney = money - moneyBeforePlay
-    changeDisplay.innerHTML = `${changeMoney}`
-    changeDisplay.style.display = 'block'
-    changeDisplayColor()
-    moneyBeforePlay = money
-  }, 10000)
+  console.log(money, moneyBeforePlay)
+  changeMoney = money - moneyBeforePlay
+  changeDisplay.innerHTML = `${changeMoney}`
+  changeDisplay.style.display = 'block'
+  changeDisplayColor()
+  moneyBeforePlay = money
 }
 
 const changeDisplayColor = () => {
@@ -1532,9 +1529,11 @@ function checkWin() {
   checkColorWin()
   setTimeout(() => {
     document.querySelectorAll('.number-bet').forEach((chip) => chip.remove())
-    // displayLastNumbers()
-    changeDisplay.style.display = 'none'
-  }, 12000)
+    checkChange()
+    setTimeout(() => {
+      changeDisplay.style.display = 'none'
+    }, 1000)
+  }, 10055)
 }
 
 const displayWin = (win) => {
@@ -1740,12 +1739,6 @@ function checkColumnWin() {
     winNumber = columnOptions[actualColumn] * 3
     setTimeout(() => {
       displayWin(winNumber)
-      // if ((winNumber = columnOptions[actualColumn] * 3)) {
-      //   money = moneyBeforePlay + betSize + 2
-      // } else {
-      //   money = moneyBeforePlay - actualBet
-      // }
-      // moneyDisplay.innerHTML = `${money}`
     }, 10010)
   }
   for (let i = 0; i < columnOptions.length; i++) {
@@ -1760,12 +1753,6 @@ function checkRowWin() {
     winNumber = rowOptions[actualRow] * 3
     setTimeout(() => {
       displayWin(winNumber)
-      // if ((winNumber = rowOptions[actualRow] * 3)) {
-      //   money = moneyBeforePlay + betSize + 2
-      // } else {
-      //   money = moneyBeforePlay - actualBet
-      // }
-      // moneyDisplay.innerHTML = `${money}`
     }, 10020)
   }
   for (let i = 0; i < rowOptions.length; i++) {
@@ -1780,12 +1767,6 @@ function checkHalfWin() {
     winNumber = halfOptions[actualHalf] * 2
     setTimeout(() => {
       displayWin(winNumber)
-      // if ((winNumber = halfOptions[actualHalf] * 2)) {
-      //   money = moneyBeforePlay + betSize + 1
-      // } else {
-      //   money = moneyBeforePlay - actualBet
-      // }
-      // moneyDisplay.innerHTML = `${money}`
     }, 10030)
   }
   for (let i = 0; i < halfOptions.length; i++) {
@@ -1800,12 +1781,6 @@ function checkEvenWin() {
     winNumber = evenOptions[actualEven] * 2
     setTimeout(() => {
       displayWin(winNumber)
-      // if ((winNumber = evenOptions[actualEven] * 2)) {
-      //   money = moneyBeforePlay + betSize + 1
-      // } else {
-      //   money = moneyBeforePlay - actualBet
-      // }
-      // moneyDisplay.innerHTML = `${money}`
     }, 10040)
   }
   for (let i = 0; i < evenOptions.length; i++) {
@@ -1821,12 +1796,6 @@ function checkColorWin() {
     console.log(winNumber)
     setTimeout(() => {
       displayWin(winNumber)
-      // if ((winNumber = colorOptions[actualColor] * 2)) {
-      //   money = moneyBeforePlay + betSize + 1
-      // } else {
-      //   money = moneyBeforePlay - actualBet
-      // }
-      // moneyDisplay.innerHTML = `${money}`
     }, 10050)
   }
   for (let i = 0; i < colorOptions.length; i++) {
