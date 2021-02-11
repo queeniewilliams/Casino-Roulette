@@ -311,33 +311,9 @@ span {
   margin: 0 0 0 20px;
 }
 
-/* .probability-display {
-  position: absolute;
-  bottom: 70%;
-  right: 5%;
-  margin: 30px 0 0 1000px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.probability-display span {
-  font-size: 22px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.prob-container {
-  display: grid;
-  flex-direction: column;
-  font-size: 14px;
-  color: mintcream;
-} */
-
 span {
   color: rgb(216, 195, 76);
 }
-
-/* .prob {
-  margin: 0 0 0 20px;
-} */
 
 #switchMode {
   position: absolute;

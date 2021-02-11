@@ -821,12 +821,10 @@ let actualDeg
   let deg = 0
   playBtn.addEventListener('click', () => {
     playBtn.style.pointerEvents = 'none'
-    // deg = 0 + Math.random() * 360
     deg = Math.random() * (0 - 360) + 360
     actualDeg = deg
-    // wheel.style.transform = `rotate(${actualDeg}deg)`
     console.log(deg)
-    wheel.style.transition = 'all 10s ease-out'
+    wheel.style.transition = 'all 1s ease-out'
     wheel.style.transform = `rotate(${deg}deg)`
     wheel.classList.add('blur')
     setTimeout(() => {
@@ -855,11 +853,6 @@ let actualDeg
     console.log(deg)
   })
 })()
-
-// playBtn.addEventListener('click', () => {
-//   console.log('click')
-//   spin()
-// })
 
 wheelSound = document.querySelector('.spinning')
 wheelSound.volume = 1
@@ -1110,156 +1103,6 @@ function spinResult() {
     }
   })
 }
-
-// const sliceArr = [
-//   { min: 0, max: 4.86, value: 0 },
-//   { min: 4.86, max: 9.73, value: 26 },
-//   { min: 9.73, max: 14.59, value: 26 },
-//   { min: 14.59, max: 19.46, value: 3 },
-//   { min: 19.46, max: 24.32, value: 3 },
-//   { min: 24.32, max: 29.19, value: 35 },
-//   { min: 29.19, max: 34.05, value: 35 },
-//   { min: 34.05, max: 38.92, value: 12 },
-//   { min: 38.92, max: 43.78, value: 12 },
-//   { min: 43.78, max: 48.65, value: 28 },
-//   { min: 48.65, max: 53.51, value: 28 },
-//   { min: 53.51, max: 58.38, value: 7 },
-//   { min: 58.38, max: 63.24, value: 7 },
-//   { min: 63.24, max: 68.11, value: 29 },
-//   { min: 68.11, max: 72.97, value: 29 },
-//   { min: 72.97, max: 77.84, value: 18 },
-//   { min: 77.84, max: 82.7, value: 18 },
-//   { min: 82.7, max: 87.57, value: 22 },
-//   { min: 87.57, max: 92.43, value: 22 },
-//   { min: 92.43, max: 97.3, value: 9 },
-//   { min: 97.3, max: 102.16, value: 9 },
-//   { min: 102.16, max: 107.03, value: 31 },
-//   { min: 107.03, max: 111.89, value: 31 },
-//   { min: 111.89, max: 116.76, value: 14 },
-//   { min: 116.76, max: 121.62, value: 14 },
-//   { min: 121.62, max: 126.49, value: 20 },
-//   { min: 126.49, max: 131.35, value: 20 },
-//   { min: 131.35, max: 136.22, value: 1 },
-//   { min: 136.22, max: 141.08, value: 1 },
-//   { min: 141.08, max: 145.95, value: 33 },
-//   { min: 145.95, max: 150.81, value: 33 },
-//   { min: 150.81, max: 155.68, value: 16 },
-//   { min: 155.68, max: 160.54, value: 16 },
-//   { min: 160.54, max: 165.41, value: 24 },
-//   { min: 165.41, max: 170.27, value: 24 },
-//   { min: 170.27, max: 175.14, value: 5 },
-//   { min: 175.14, max: 180, value: 5 },
-//   { min: 180, max: 184.86, value: 10 },
-//   { min: 184.86, max: 189.73, value: 10 },
-//   { min: 189.73, max: 194.59, value: 23 },
-//   { min: 194.59, max: 199.46, value: 23 },
-//   { min: 199.46, max: 204.32, value: 8 },
-//   { min: 204.32, max: 209.19, value: 8 },
-//   { min: 209.19, max: 214.05, value: 30 },
-//   { min: 214.05, max: 218.92, value: 30 },
-//   { min: 218.92, max: 223.78, value: 11 },
-//   { min: 223.78, max: 228.65, value: 11 },
-//   { min: 228.65, max: 233.51, value: 36 },
-//   { min: 233.51, max: 238.38, value: 36 },
-//   { min: 238.38, max: 243.24, value: 13 },
-//   { min: 243.24, max: 248.11, value: 13 },
-//   { min: 248.11, max: 252.97, value: 27 },
-//   { min: 252.97, max: 257.84, value: 27 },
-//   { min: 257.84, max: 262.7, value: 6 },
-//   { min: 262.7, max: 267.57, value: 6 },
-//   { min: 267.57, max: 272.43, value: 34 },
-//   { min: 272.43, max: 277.3, value: 34 },
-//   { min: 277.3, max: 282.16, value: 17 },
-//   { min: 282.16, max: 287.03, value: 17 },
-//   { min: 287.03, max: 291.89, value: 25 },
-//   { min: 291.89, max: 296.76, value: 25 },
-//   { min: 296.76, max: 301.62, value: 2 },
-//   { min: 301.62, max: 306.49, value: 2 },
-//   { min: 306.49, max: 311.35, value: 21 },
-//   { min: 311.35, max: 316.22, value: 21 },
-//   { min: 316.22, max: 321.08, value: 4 },
-//   { min: 321.08, max: 325.95, value: 4 },
-//   { min: 325.95, max: 330.81, value: 19 },
-//   { min: 330.81, max: 335.68, value: 19 },
-//   { min: 335.68, max: 340.54, value: 15 },
-//   { min: 340.54, max: 345.41, value: 15 },
-//   { min: 345.41, max: 350.27, value: 32 },
-//   { min: 350.27, max: 355.14, value: 32 },
-//   { min: 355.14, max: 360, value: 0 }
-// ]
-
-// let actualNumber = null
-// let alreadyPlayed = false
-
-// //spinning wheel
-// let isSpinComplete = false
-// let isWheelSpin = false
-// const playBtn = document.querySelector('#play')
-// let actualDeg
-// ;(function spin() {
-//   const wheel = document.querySelector('.wheel')
-//   let isWheelSpin = true
-//   let deg = 0
-//   playBtn.addEventListener('click', () => {
-//     let arc = Math.PI / (sliceArr.length / 2)
-//     playBtn.style.pointerEvents = 'none'
-//     let randomDeg = (deg * 180) / Math.PI + 90
-//     deg = randomDeg * 10
-//     console.log(randomDeg, deg)
-//     let remainder = Math.floor(360 - (deg % 360)) / ((arc * 180) / Math.PI)
-//     console.log(deg, remainder)
-//     console.log(randomDeg, remainder)
-//     actualDeg = remainder
-//     wheel.style.transition = `all 10s ease-out`
-//     wheel.style.transform = `rotate(${deg}deg)`
-//     wheel.classList.add('blur')
-//     setTimeout(() => {
-//       isSpinComplete = true
-//       // setTimeout(() => {
-//       //   wheel.style.transform = `rotate(${0}deg)`
-//       //   wheel.style.transition = `all 2s ease-out`
-//       // }, 11000)
-//       // deg = 0
-//       // console.log(deg)
-//       if (isSpinComplete) {
-//         spinResult(actualDeg)
-//         if (actualNumber !== 0 && actualNumber !== null) {
-//           console.log('made it here')
-//           checkWin()
-//           // checkChange()
-//           setTimeout(() => {
-//             displayLastNumbers()
-//             playBtn.style.pointerEvents = 'auto'
-//           }, 10000)
-//         } else {
-//           resetAllArrays()
-//         }
-//       }
-//     }, 1000)
-// })()
-// playBtn.addEventListener('click', () => {
-//   spin()
-//   setTimeout(() => {
-//     playBtn.style.pointerEvents = 'auto'
-//   }, 10000)
-// })
-
-// wheelSound = document.querySelector('.spinning')
-// wheelSound.volume = 1
-// playBtn.addEventListener('click', function () {
-//   if (wheelSound.paused) {
-//     wheelSound.play()
-//   } else {
-//     wheelSound.pause()
-//   }
-// })
-
-// function spinResult(actualDeg) {
-//   console.log(actualDeg)
-//   let result = sliceArr[actualDeg].value
-//   actualNumber = result
-//   console.log(actualNumber)
-// }
 
 // reset all arrays
 const resetAllArrays = () => {
