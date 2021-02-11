@@ -1404,25 +1404,34 @@ let actualDeg
     wheel.classList.add('blur')
     setTimeout(() => {
       isSpinComplete = true
+      // setTimeout(() => {
+      //   wheel.style.transform = `rotate(${0}deg)`
+      //   wheel.style.transition = `all 2s ease-out`
+      // }, 11000)
+      // deg = 0
+      // console.log(deg)
       if (isSpinComplete) {
         spinResult(actualDeg)
         if (actualNumber !== 0 && actualNumber !== null) {
           console.log('made it here')
           checkWin()
           checkChange()
+          ctualBet = 0
           setTimeout(() => {
             displayLastNumbers()
             playBtn.style.pointerEvents = 'auto'
           }, 10000)
-          setTimeout(() => {
-            wheel.style.transform = `rotate(${0}deg)`
-            wheel.style.transition = `all 2s ease-out`
-          }, 12000)
         } else {
           resetAllArrays()
         }
       }
     }, 1000)
+    setTimeout(() => {
+      wheel.style.transform = `rotate(${0}deg)`
+      wheel.style.transition = `all 2s ease-out`
+    }, 11000)
+    deg = 0
+    console.log(deg)
   })
 })()
 // playBtn.addEventListener('click', function () {
@@ -1492,6 +1501,7 @@ const resetAllArrays = () => {
 // }
 
 // check win
+
 let changeMoney = 0
 
 const changeDisplay = document.getElementById('change')
@@ -1513,7 +1523,6 @@ const changeDisplayColor = () => {
     changeDisplay.innerHTML = `+${changeMoney}`
   }
 }
-
 function checkWin() {
   checkNumberWin()
   checkColumnWin()
@@ -1527,18 +1536,6 @@ function checkWin() {
     changeDisplay.style.display = 'none'
   }, 12000)
 }
-
-// const arrFunction = []
-// arrFunction.push(checkColorWin)
-// arrFunction.push(checkColumnWin)
-// arrFunction.push(checkRowWin)
-// arrFunction.push(checkHalfWin)
-// arrFunction.push(checkEvenWin)
-// arrFunction.push(checkColorWin)
-
-// arrFunction.forEach((win) => {
-//   totalWin = win + win
-// })
 
 const displayWin = (win) => {
   money = money + win
