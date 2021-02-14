@@ -41,6 +41,14 @@ let money = 2000
 
 //numbers variable
 
+
+// Instead of having indivual number variables, you could utilize a number array
+
+let number = [];
+for (let i = 0; i < 36; i++) {
+  number[i] = document.getElementById(i.toString()); //<-- you want i.toString() because you'd otherwise get document.getElementById(0) than document.getElementById('0')
+}
+
 const number0 = document.getElementById('0')
 const number1 = document.getElementById('1')
 const number2 = document.getElementById('2')
@@ -220,6 +228,20 @@ const checkMoney = () => {
 }
 
 let gameIsOn = false
+
+for (let i = 0; number.length < 36; i++) {
+  number[i].addEventListener('click', function () {
+    if (checkMoney() && !gameIsOn) {
+      insertBet(number[i])
+      addToNumberOptions(i)
+      subtractMoney()
+    } else if (gameIsOn) {
+      alert("You can't bet now!")
+    } else {
+      alert('Insufficient Money!')
+    }
+  })
+}
 
 number0.addEventListener('click', function () {
   if (checkMoney() && !gameIsOn) {
